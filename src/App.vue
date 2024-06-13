@@ -30,5 +30,5 @@ let nameUser = tg.WebAppUser.first_name
 
 <template>
   <!-- <div class="w-screen h-screen"><component :is="currentView" /></div> -->
-   <div>{{ nameUser }}</div>
+   <div>{{ tg }}</div>
 </template>
