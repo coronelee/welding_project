@@ -10,10 +10,10 @@ const routes = {
   '/reg': RegComponent,
   '/main': HomeComponent,
   '/rating': RatingComponent,
-  '/': MainComponent
+  '/': HomeComponent
 }
 const currentView = computed(() => {
-  return routes[currentPath.value.slice(1) || '/'] || MainComponent
+  return routes[currentPath.value.slice(1) || '/']
 })
 const currentPath = ref(window.location.hash)
 
