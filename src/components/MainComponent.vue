@@ -24,13 +24,14 @@ const loadImage = () => {
     let input = document.createElement('input');
 }
 const downloadImage = (id) => {
+    
     document.getElementById(""+id).click();
 }
 const onFileChange = (event) => {
     const selectedFile = event.target.files[0];
     imageSrc.value = URL.createObjectURL(selectedFile);
 
-
+    showCamera.value = !showCamera.value;
 
     // const img = new FormData();
     // img.append('photo', selectedFile);
