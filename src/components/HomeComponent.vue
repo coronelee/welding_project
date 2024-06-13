@@ -18,12 +18,4 @@ const swapPage = () => {
   }, 1000);
 }
 </script>
-
-
-<style scoped>
-#home {
-    background-size: 100% 100%;
-    background-position: 0px 0px,0px 0px,3px 0px;
-    background-image: radial-gradient(49% 81% at 94% 7%, #4c0029 0%, #073AFF00 100%),radial-gradient(113% 91% at 13% 54%, #49779FFF 1%, #FF000000 99%),radial-gradient(142% 91% at 1% 58%, #000000FF 99%, #FF000000 99%);
-}
-</style>
+ 

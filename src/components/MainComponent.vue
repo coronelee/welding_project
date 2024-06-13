@@ -8,7 +8,6 @@
             <button class="bg-[url('/images/help.svg')]"></button>
             <button class="bg-[url('/images/top.svg')]"></button>
             <button class="bg-[url('/images/profile.svg')]"></button>
-            
         </div>
         <div v-if="showNavFile" id="navFile" class="w-full w-full transition-all duration-300 animate-[showNav_0.3s_ease_1] h-[50px] flex gap-4 justify-center items-center [&>button]:w-full [&>button]:h-full rounded-lg [&>button]:bg-[#D9D9D9]">
             <button @click="downloadImage('camera')">Сделать фото</button> <button @click="downloadImage('file')">Выбрать из галереи</button>
