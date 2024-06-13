@@ -25,6 +25,8 @@ const telegram = new TelegramWebAppContainer();
 telegram.WebApp.ready();
 const first_name = telegram.WebApp.initDataUnsafe?.user?.first_name;
 
+telegram.WebApp.expand();
+
 </script>
 
 <template>
