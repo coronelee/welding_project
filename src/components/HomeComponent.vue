@@ -7,12 +7,7 @@
 
 
 <script setup>
-    import axios from 'axios';
-    import { ref } from 'vue';
-
-    const first_name = ref('');
-
-    axios.get('https://api.telegram.org/bot7310452207:AAFjS32-tuKH3V-W1Ghojv67MfQpBgcOj3M/getupdates').then((response) => {
-        first_name.value = response.data.result[1].message.chat.first_name;
-    })  
+const props = defineProps({
+  first_name: String
+})
 </script>
