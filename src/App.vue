@@ -23,7 +23,6 @@ import { TelegramWebAppContainer } from '@telegram-web-app/core';
 const telegram = new TelegramWebAppContainer();
 
 telegram.WebApp.ready();
-telegram.expand();
 const first_name = telegram.WebApp.initDataUnsafe?.user?.first_name;
 </script>
 
