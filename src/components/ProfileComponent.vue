@@ -2,7 +2,7 @@
      <div class="w-full h-full flex justify-between items-top flex-col p-2 gap-2 animate-[showMain_0.5s_ease_1]">
         <div  class="text-3xl w-full h-full flex justify-center items-center flex-col gap-2 text-white" >
            <span>{{ first_name }}</span> 
-           <span>{{ username }}</span> 
+           <span>@{{ username }}</span> 
         </div>
         <NavBar :closeNavFile="closeNavFile"/>
      </div>
