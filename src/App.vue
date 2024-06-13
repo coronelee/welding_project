@@ -24,11 +24,15 @@ window.addEventListener('hashchange', () => {
 
 import { TelegramWebAppContainer } from '@telegram-web-app/core';
 
-let tg = window.Telegram.WebApp;
-let nameUser = tg.WebAppUser.first_name
+const telegram = new TelegramWebAppContainer();
+
+// When yor app is ready
+telegram.WebApp.ready();
+
+const first_name = telegram.WebApp.initDataUnsafe?.user?.first_name;
 </script>
 
 <template>
   <!-- <div class="w-screen h-screen"><component :is="currentView" /></div> -->
-   <div>{{ tg }}</div>
+   <div>{{ first_name }}</div>
 </template>
