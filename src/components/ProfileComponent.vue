@@ -3,6 +3,7 @@
         <div  class="text-3xl w-full h-full" >
             {{ first_name }}
             <img :src="photo" alt="" class="w-[200px] h-[200px]">
+            {{ q }}
         </div>
         <NavBar :closeNavFile="closeNavFile"/>
      </div>
@@ -22,5 +23,7 @@ const telegram = new TelegramWebAppContainer();
 telegram.WebApp.ready();
 const first_name = telegram.WebApp.initDataUnsafe?.user?.first_name;
 const photo = telegram.WebApp.initDataUnsafe?.user?.photo_url;
+
+let q = photo.toString();
 
 </script>
