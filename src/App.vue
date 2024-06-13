@@ -3,7 +3,9 @@ import { ref, computed } from "vue";
 import MainComponent from "./components/MainComponent.vue";
 import RatingComponent from "./components/RatingComponent.vue";
 import HomeComponent from "./components/HomeComponent.vue";
+import ProfileComponent from "./components/ProfileComponent.vue";
 const routes = {
+  '/profile': ProfileComponent,
   '/home': HomeComponent,
   '/rating': RatingComponent,
   '/main': MainComponent,

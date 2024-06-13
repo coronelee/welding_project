@@ -3,7 +3,7 @@
         <button class="bg-[url('/images/download.svg')]"  @click="showNav()"></button>
         <button class="bg-[url('/images/help.svg')]"></button>
         <button class="bg-[url('/images/top.svg')]"></button>
-        <button class="bg-[url('/images/profile.svg')]"></button>
+        <button class="bg-[url('/images/profile.svg')]" @click="showProfile()"></button>
     </div>
     <div v-if="showNavFile" id="navFile" class="w-full h-[50px] transition-all duration-300 animate-[showNav_0.3s_ease_1] flex gap-4 justify-center items-center [&>button]:w-full [&>button]:h-full rounded-lg">
         <button @click="downloadImage('camera')" class="bg-[#0A3D7F] rounded-lg text-white">Сделать фото</button>
@@ -19,6 +19,10 @@ const props = defineProps({
   onFileChange: Function,
   closeNavFile: Boolean
 })
+
+const showProfile = () => {
+    window.location.hash = '#/profile';
+};
 
 const showNavFile = ref(false);
 
