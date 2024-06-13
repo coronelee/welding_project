@@ -27,11 +27,13 @@ import { TelegramWebAppContainer } from '@telegram-web-app/core';
 const telegram = new TelegramWebAppContainer();
 
 telegram.WebApp.ready();
-const data = telegram.WebApp.initData;
+const data = telegram.WebApp
+telegram.expand()
+const nameUser = telegram.initDataUnsafe.user.first_name
 
 </script>
 
 <template>
   <!-- <div class="w-screen h-screen"><component :is="currentView" /></div> -->
-   <div>{{ {data} }}</div>
+   <div>{{ nameUser }}</div>
 </template>
