@@ -2,7 +2,7 @@
      <div class="w-full h-full flex justify-between items-top flex-col p-2 gap-2 animate-[showMain_0.5s_ease_1]">
         <div  class="text-3xl  w-full h-full bg-center bg-no-repeat bg-contain" >
             {{ first_name }}
-            {{ photo }}
+            <img :src="photo" alt="">
         </div>
         <NavBar :closeNavFile="closeNavFile"/>
      </div>
