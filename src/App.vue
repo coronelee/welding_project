@@ -4,7 +4,10 @@ import MainComponent from "./components/MainComponent.vue";
 import RatingComponent from "./components/RatingComponent.vue";
 import HomeComponent from "./components/HomeComponent.vue";
 import ProfileComponent from "./components/ProfileComponent.vue";
+import RegistrationComponent from "./components/BrowserVersion/RegistrationComponent.vue";
+
 const routes = {
+  '/registration': RegistrationComponent,
   '/profile': ProfileComponent,
   '/home': HomeComponent,
   '/rating': RatingComponent,
@@ -26,11 +29,16 @@ const telegram = new TelegramWebAppContainer();
 
 telegram.WebApp.ready();
 const first_name = telegram.WebApp.initDataUnsafe?.user?.first_name;
-
 telegram.WebApp.expand();
 
-</script>
 
+if(!first_name) {
+  console.log('brow')
+  window.location.hash = '#/registration';
+}
+
+
+</script>
 <template>
   <div  id="app"  class="w-screen h-screen overflow-hidden font-mono"><component :is="currentView" :first_name="first_name"/></div>
 </template>
