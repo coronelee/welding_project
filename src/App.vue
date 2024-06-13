@@ -30,7 +30,7 @@ telegram.WebApp.expand();
 </script>
 
 <template>
-  <div  id="app"  class="w-screen h-screen"><component :is="currentView" :first_name="first_name"/></div>
+  <div  id="app"  class="w-screen h-screen overflow-hidden"><component :is="currentView" :first_name="first_name"/></div>
 </template>
 <style scoped>
 #app {
