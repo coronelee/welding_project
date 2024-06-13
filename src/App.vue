@@ -20,8 +20,12 @@ const currentPath = ref(window.location.hash)
 window.addEventListener('hashchange', () => {
   currentPath.value = window.location.hash
 })
+let tg = window.Telegram.WebApp
+
+const info = ref(tg.initDataUnsafe)
 </script>
 
 <template>
-  <div class="w-screen h-screen"><component :is="currentView" /></div>
+  <!-- <div class="w-screen h-screen"><component :is="currentView" /></div> -->
+   <div>{{ info }}</div>
 </template>
