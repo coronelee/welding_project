@@ -1,8 +1,8 @@
 <template>
      <div class="w-full h-full flex justify-between items-top flex-col p-2 gap-2 animate-[showMain_0.5s_ease_1]">
-        <div  class="text-3xl  w-full h-full bg-center bg-no-repeat bg-contain" >
+        <div  class="text-3xl w-full h-full" >
             {{ first_name }}
-            <img :src="photo" alt="">
+            <img :src="photo" alt="" class="w-[200px] h-[200px]">
         </div>
         <NavBar :closeNavFile="closeNavFile"/>
      </div>
