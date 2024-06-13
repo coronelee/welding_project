@@ -27,11 +27,11 @@ import { TelegramWebAppContainer } from '@telegram-web-app/core';
 const telegram = new TelegramWebAppContainer();
 
 telegram.WebApp.ready();
-
+const data = telegram.WebApp.initData;
 
 </script>
 
 <template>
   <!-- <div class="w-screen h-screen"><component :is="currentView" /></div> -->
-   <div>{{ telegram }}</div>
+   <div>{{ data }}</div>
 </template>
