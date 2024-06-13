@@ -5,7 +5,14 @@ export default {
     "./src/**/*.{vue,js,ts,jsx,tsx}",
   ],
   theme: {
-    extend: {},
+    extend: {
+      keyframes: {
+        showMain: {
+          '0%': { opacity: '0' },
+          '100%': { opacity: '1' },
+        }
+      }
+    },
   },
   plugins: [],
 }

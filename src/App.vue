@@ -1,15 +1,12 @@
 <script setup>
 import { ref, computed } from "vue";
-import AuthComponent from "./components/AuthComponent.vue";
-import RegComponent from "./components/RegComponent.vue";
 import MainComponent from "./components/MainComponent.vue";
 import RatingComponent from "./components/RatingComponent.vue";
 import HomeComponent from "./components/HomeComponent.vue";
 const routes = {
-  '/auth': AuthComponent,
-  '/reg': RegComponent,
-  '/main': HomeComponent,
+  '/home': HomeComponent,
   '/rating': RatingComponent,
+  '/main': MainComponent,
   '/': HomeComponent
 }
 const currentView = computed(() => {
