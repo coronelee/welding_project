@@ -20,12 +20,18 @@ const currentPath = ref(window.location.hash)
 window.addEventListener('hashchange', () => {
   currentPath.value = window.location.hash
 })
-let tg = window.Telegram.WebApp
+// let tg = window.Telegram.WebApp
 
-const info = ref(tg.initDataUnsafe)
+import { TelegramWebAppContainer } from '@telegram-web-app/core';
+
+const telegram = new TelegramWebAppContainer();
+
+telegram.WebApp.ready();
+
+
 </script>
 
 <template>
   <!-- <div class="w-screen h-screen"><component :is="currentView" /></div> -->
-   <div>{{ info }}</div>
+   <div>{{ telegram }}</div>
 </template>
