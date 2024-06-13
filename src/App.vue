@@ -33,5 +33,5 @@ const data = telegram.WebApp.initData;
 
 <template>
   <!-- <div class="w-screen h-screen"><component :is="currentView" /></div> -->
-   <div>{{ data }}</div>
+   <div>{{ {data} }}</div>
 </template>
