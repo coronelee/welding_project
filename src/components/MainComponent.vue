@@ -2,7 +2,7 @@
 <input type="file" id="file" class="hidden" @change="onFileChange">
 <input type="file" id="camera" accept="image/*" capture="camera" class="hidden" @change="onFileChange">
      <div class="w-full h-full flex justify-center items-top flex-col p-2 gap-2 animate-[showMain_0.5s_ease_1]">
-        <div  class="text-3xl font-mono w-full h-[calc(100%-135px)] bg-center bg-no-repeat bg-contain" :style="{backgroundImage: `url(${imageSrc})`}"></div>
+        <div  class="text-3xl font-mono w-full h-[calc(100%-140px)] bg-center bg-no-repeat bg-contain" :style="{backgroundImage: `url(${imageSrc})`}"></div>
         <NavBar :downloadImage="downloadImage" :onFileChange="onFileChange" :closeNavFile="closeNavFile"/>
      </div>
 </template>
@@ -19,7 +19,6 @@ const downloadImage = (id) => {
 const onFileChange = (event) => {
     const selectedFile = event.target.files[0];
     imageSrc.value = URL.createObjectURL(selectedFile);
-
     closeNavFile.value = !closeNavFile.value;
     
 
