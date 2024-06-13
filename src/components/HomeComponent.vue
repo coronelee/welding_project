@@ -1,6 +1,6 @@
 <template>
     <div id="home" class="transition-all duration-1000 bg-cover bg-no-repeat w-full h-full flex justify-center items-center flex-col gap-8">
-      <span class="text-5xl font-mono text-white">Привет {{ first_name }}!</span>
+      <span class="text-5xl font-mono text-white">Привет, <br>{{ first_name }}!</span>
       <button class="text-3xl bg-white px-6 py-3 rounded-lg" @click="swapPage">Start</button>
     </div>
 </template>
