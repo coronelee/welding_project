@@ -5,8 +5,10 @@ import RatingComponent from "./components/RatingComponent.vue";
 import HomeComponent from "./components/HomeComponent.vue";
 import ProfileComponent from "./components/ProfileComponent.vue";
 import RegistrationComponent from "./components/BrowserVersion/RegistrationComponent.vue";
+import RegistrationNewAccount from "./components/BrowserVersion/RegistrationNewAccount.vue";
 
 const routes = {
+  '/registrationNewAccount': RegistrationNewAccount,
   '/registration': RegistrationComponent,
   '/profile': ProfileComponent,
   '/home': HomeComponent,

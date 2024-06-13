@@ -1,8 +1,8 @@
 <template>
      <div class="w-full h-full flex justify-between items-top flex-col p-2 gap-2 animate-[showMain_0.5s_ease_1]">
         <div  class="text-3xl w-full h-full py-12 flex justify-start items-center flex-col gap-4 text-white" >
-           <div class="flex flex-col justify-start items-center"><span>{{ first_name }}Anton</span> 
-           <span class="text-2xl text-gray-300">@{{ username }}yourantosha</span> </div>
+           <div class="flex flex-col justify-start items-center"><span>{{ first_name }}</span> 
+           <span class="text-2xl text-gray-300">@{{ username }}</span> </div>
            <span class="text-2xl">У вас {{ points }} баллов</span>
         </div>
         <NavBar :closeNavFile="closeNavFile"/>
