@@ -27,5 +27,5 @@ const first_name = telegram.WebApp.initDataUnsafe?.user?.first_name;
 </script>
 
 <template>
-  <div class="w-screen h-screen pb-16"><component :is="currentView" :first_name="first_name"/></div>
+  <div class="w-screen h-screen pb-12"><component :is="currentView" :first_name="first_name"/></div>
 </template>
