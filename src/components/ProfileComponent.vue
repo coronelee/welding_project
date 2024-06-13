@@ -22,7 +22,7 @@ const telegram = new TelegramWebAppContainer();
 
 telegram.WebApp.ready();
 const first_name = telegram.WebApp.initDataUnsafe?.user?.first_name;
-const photo = telegram.WebApp.initDataUnsafe?.photo_url?.photo_url;
+const photo = telegram.WebAppUser?.initDataUnsafe?.user?.photo_url;
 
 
 </script>
