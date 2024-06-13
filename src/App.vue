@@ -13,7 +13,7 @@ const routes = {
   '/': HomeComponent
 }
 const currentView = computed(() => {
-  return routes[currentPath.value.slice(1) || '/']
+  return routes[currentPath.value.slice(1) || '/'] || HomeComponent
 })
 const currentPath = ref(window.location.hash)
 
