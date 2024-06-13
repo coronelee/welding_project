@@ -26,7 +26,6 @@ telegram.WebApp.ready();
 const first_name = telegram.WebApp.initDataUnsafe?.user?.first_name;
 
 telegram.WebApp.expand();
-telegram.WebApp.openTelegramLink('https://t.me/welding_seams_bot/WeldingSeamsApp');
 
 </script>
 
