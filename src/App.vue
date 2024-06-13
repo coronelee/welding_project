@@ -24,13 +24,9 @@ window.addEventListener('hashchange', () => {
 
 import { TelegramWebAppContainer } from '@telegram-web-app/core';
 
-const telegram = new TelegramWebAppContainer();
-
-telegram.WebApp.ready();
-const data = telegram.WebApp
-telegram.expand()
-const nameUser = telegram.initDataUnsafe.user.first_name
-
+let tg = window.Telegram.WebApp;
+tg.expand();
+let nameUser = tg.initDataUnsafe.user.first_name
 </script>
 
 <template>
