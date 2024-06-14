@@ -1,21 +1,29 @@
 <template>
-    <div id="home" class="transition-all duration-1000 bg-cover bg-no-repeat w-full h-full flex justify-center items-center flex-col gap-8">
-      <span class="text-5xl font-mono text-white">Привет, <br>{{ first_name }}!</span>
-      <button class="text-3xl bg-white px-6 py-3 rounded-lg" @click="swapPage">Start</button>
-    </div>
+  <div id="home" @click="getAnim()"
+    class="transition-all duration-1000  w-screen h-screen absolute flex justify-end items-center flex-col p-24">
+
+    <img src="/images/logo.svg" class="w-[300px] animate-pulse" alt="logo ">
+  </div>
 </template>
 
 
 <script setup>
-const props = defineProps({
-  first_name: String
-})
-
-const swapPage = () => {
-  document.getElementById('home').style.transform = 'translateX(-100%)';
-  setTimeout(() => {
-  window.location.hash = '#/main';
-  }, 1000);
+const getAnim = () => {
+  let el = document.getElementById('home');
+  el.classList.add('animate-[closeWelcome_0.5s_ease_1]');
 }
+
 </script>
- 
+
+<style scoped>
+#home {
+  background-size: 100% 100%;
+  background-position: 0px 0px;
+  background-image: linear-gradient(90deg, #A100FFFF 0%, #71C4FFFF 100%);
+  animation-duration: 1.5s;
+  animation-timing-function: ease-in-out;
+  animation-fill-mode: forwards;
+  box-shadow: 0 0 10000px 300px #A100FFFF;
+  z-index: 100;
+}
+</style>

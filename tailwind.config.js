@@ -23,6 +23,15 @@ export default {
           '0%': { height: '0' },
           '100%': { height: '85%' },
         },
+        closeWelcome: {
+          "0%" : {},
+
+          "100%": {
+            transform: 'translate(200%, 200%)',
+            display: 'none',
+            opacity: 0
+          }
+        }
       },
       fontFamily: {
         Manrope_Bold: ["Manrope_Bold", "sans-serif"],

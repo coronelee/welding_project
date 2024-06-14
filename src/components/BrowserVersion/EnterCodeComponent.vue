@@ -21,7 +21,7 @@
         </div>
     </div>
 </template>
- 
+
 <script setup>
 import { watch, onMounted } from 'vue';
 const props = defineProps({
@@ -36,16 +36,18 @@ onMounted(() => {
     document.getElementById('codeSymbol1').focus()
 
 })
-const code = (input) => {
-    if (input == 'enter') {
-       
-        let codeInputs = document.getElementById('codeSymbol1').value + document.getElementById('codeSymbol2').value + document.getElementById('codeSymbol3').value + document.getElementById('codeSymbol4').value
-        console.log(props.code + '  '  + codeInputs)
-        if(props.code == codeInputs){
-            document.location.href = '#/main'
+const code = (inputIndex) => {
+    const codeInputs = [...Array(4)].map((_, i) =>
+        document.getElementById(`codeSymbol${i + 1}`).value
+    ).join('');
+
+    if (inputIndex === 'enter') {
+        if (codeInputs === props.code) {
+            document.location.href = '#/main';
         }
     } else {
-        document.getElementById('codeSymbol' + input).focus()
+        document.getElementById(`codeSymbol${inputIndex}`).focus();
     }
 }
+
 </script>

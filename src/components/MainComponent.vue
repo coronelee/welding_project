@@ -1,10 +1,12 @@
 <template>
-     <div class="w-full h-dvh flex justify-end items-start   flex-col animate-[showMain_0.5s_ease_1]">
-        <CheckComponent :first_name="first_name" v-if="page === 'check'"/>
-        <BaseComponent  v-if="page === 'base'"/>
-        <ProfileComponent :first_name="first_name" :username="username" v-if="page === 'profile'"/>
-        <NavBar :downloadImage="downloadImage" :onFileChange="onFileChange" :closeNavFile="closeNavFile" :page="page" :changePage="changePage"/>
-     </div>
+  <div class="w-full h-dvh flex justify-end items-start   flex-col animate-[showMain_0.5s_ease_1]">
+
+    <CheckComponent :first_name="first_name" v-if="page === 'check'" />
+    <BaseComponent v-if="page === 'base'" />
+    <ProfileComponent :first_name="first_name" :username="username" v-if="page === 'profile'" />
+    <NavBar :downloadImage="downloadImage" :onFileChange="onFileChange" :closeNavFile="closeNavFile" :page="page"
+      :changePage="changePage" />
+  </div>
 </template>
 
 <script setup>
@@ -24,21 +26,21 @@ const changePage = (pageName) => {
 }
 const closeNavFile = ref(false);
 const downloadImage = (id) => {
-    document.getElementById(""+id).click();
+  document.getElementById("" + id).click();
 }
 const onFileChange = (event) => {
-    const selectedFile = event.target.files[0];
-    imageSrc.value = URL.createObjectURL(selectedFile);
-    closeNavFile.value = !closeNavFile.value;
-    
-    // const img = new FormData();
-    // img.append('photo', selectedFile);
-    // axios.post(`http://localhost:8081/api/v1/photo/load`, 
-    // img,
-    // {
-    //     headers: { "Content-Type": "multipart/form-data"},
-    // },)
-  }
+  const selectedFile = event.target.files[0];
+  imageSrc.value = URL.createObjectURL(selectedFile);
+  closeNavFile.value = !closeNavFile.value;
 
-  
+  // const img = new FormData();
+  // img.append('photo', selectedFile);
+  // axios.post(`http://localhost:8081/api/v1/photo/load`, 
+  // img,
+  // {
+  //     headers: { "Content-Type": "multipart/form-data"},
+  // },)
+}
+
+
 </script>

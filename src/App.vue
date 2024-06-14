@@ -1,20 +1,13 @@
 <script setup>
 import { ref, computed } from "vue";
 import MainComponent from "./components/MainComponent.vue";
-import RatingComponent from "./components/RatingComponent.vue";
 import HomeComponent from "./components/HomeComponent.vue";
-import ProfileComponent from "./components/ProfileComponent.vue";
-import RegistrationComponent from "./components/BrowserVersion/RegistrationComponent.vue";
 import RegistrationNewAccount from "./components/BrowserVersion/RegistrationNewAccount.vue";
 
-const routes = { 
+const routes = {
   '/registrationNewAccount': RegistrationNewAccount,
-  '/registration': RegistrationComponent,
-  '/profile': ProfileComponent,
   '/home': HomeComponent,
-  '/rating': RatingComponent,
   '/main': MainComponent,
-  '/': HomeComponent
 }
 const currentView = computed(() => {
   return routes[currentPath.value.slice(1) || '/'] || MainComponent
@@ -36,12 +29,15 @@ const username = telegram.WebApp.initDataUnsafe?.user?.username;
 telegram.WebApp.expand();
 
 
-if(!first_name) {
+if (!first_name) {
   window.location.hash = '#/registration';
 }
 
 
 </script>
 <template>
-  <div  class="w-screen h-screen overflow-hidden font-mono bg-[#f3f8fa]"><component :is="currentView" :username="username" :first_name="first_name"/></div>
+  <component :is="HomeComponent" />
+  <div class="w-screen h-screen overflow-hidden font-mono bg-[#f3f8fa]">
+    <component :is="currentView" :username="username" :first_name="first_name" />
+  </div>
 </template>
