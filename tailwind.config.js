@@ -15,6 +15,10 @@ export default {
           '0%': { transform: 'translateY(100%)' },
           '100%': { transform: 'translateY(0)' },
         },
+        showBase: {
+          '0%': { height: '0' },
+          '100%': { height: '100%' },
+        },
         showEnterCodeForm: {
           '0%': { height: '0' },
           '100%': { height: '85%' },
