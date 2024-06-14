@@ -1,43 +1,88 @@
 <template>
-
-     
     <div class="text-3xl w-full h-full bg-white rounded-t-lg flex justify-between items-center  py-6 px-4  flex-col">
-        <div class="flex justify-center items-center flex-col gap-2">
+        <div class="flex justify-center items-center flex-col gap-2  w-full">
             <span class="font-Manrope_Bold text-[24px]">База знаний</span>
-            <div @click="showFull(i.id, i.idSmall)" v-for="i in data" :key="i" class="flex flex-col items-center justify-between leading-6 border rounded-lg border-[#6BACE4]  font-Manrope_Medium text-[16px]">
-                <span :style="s" :id="i.idSmall" class="flex justify-between w-full rounded-lg py-6 px-4 "><span>{{ i.name }}</span> <img src="/images/arrow-down.svg" alt=""></span>
-                <span :id="i.id" class="hidden p-4 animate-[showBase_0.5s_ease-in-out] float-top" >{{ i.full }}</span>
+            <div
+                class="font-Manrope_Medium text-[16px] w-full border border-[#6BACE4] rounded-lg flex justify-center items-center flex-col">
+                <span class="w-full py-2 bg-[#6BACE4] text-white rounded-t-lg px-4 " @click="openLineChart('line')">
+                    Процент дефектных швов
+                </span>
+                <div id="line" class="hidden ">
+                    <div class="flex flex-col px-4 font-Manrope_Medium text-[16px] text-[#5F5F5F]">
+                        <span class="">
+                            Проверки - $число
+                        </span>
+                        <span>
+                            Общее кол-во не дефектых - $число
+                        </span>
+                        <span>
+                            Кол-во дефектных - $число
+                        </span>
+                        <span>
+                            Процент дефектов - $число
+                        </span>
+                    </div>
+                    <ChartComponent typechart="line" />
+                </div>
+            </div>
+            <div
+                class="font-Manrope_Medium text-[16px] w-full border border-[#6BACE4] rounded-lg flex justify-center items-center flex-col">
+                <span class="w-full py-2 bg-[#6BACE4] text-white rounded-t-lg px-4 " @click="openLineChart('bar')">
+                    Процент дефектных швов
+                </span>
+                <div id="bar" class="hidden ">
+                    <div class="flex flex-col px-4 font-Manrope_Medium text-[16px] text-[#5F5F5F]">
+                        <span class="">
+                            Проверки - $число
+                        </span>
+                        <span>
+                            Общее кол-во не дефектых - $число
+                        </span>
+                        <span>
+                            Кол-во дефектных - $число
+                        </span>
+                        <span>
+                            Процент дефектов - $число
+                        </span>
+                    </div>
+                    <ChartComponent typechart="bar" />
+                </div>
+                <div
+                    class="font-Manrope_Medium text-[16px] w-full border border-[#6BACE4] rounded-lg flex justify-center items-center flex-col">
+                    <span class="w-full py-2 bg-[#6BACE4] text-white rounded-t-lg px-4 "
+                        @click="openLineChart('doughnut')">
+                        Процент дефектных швов
+                    </span>
+                    <div id="doughnut" class="hidden ">
+                        <div class="flex flex-col px-4 font-Manrope_Medium text-[16px] text-[#5F5F5F]">
+                            <span class="">
+                                Проверки - $число
+                            </span>
+                            <span>
+                                Общее кол-во не дефектых - $число
+                            </span>
+                            <span>
+                                Кол-во дефектных - $число
+                            </span>
+                            <span>
+                                Процент дефектов - $число
+                            </span>
+                        </div>
+                        <ChartComponent typechart="doughnut" />
+                    </div>
+                </div>
             </div>
         </div>
-         
+
     </div>
-
-
 </template>
 
 <script setup>
-import { ref } from 'vue';
-defineProps({
-    first_name: String
-})
-const showFull = (id, idSmall) =>{
-    document.getElementById(id).classList.toggle('hidden')
-    document.getElementById(idSmall).classList.toggle('bg-[#6BACE4]')
-    console.log(id)
-}
-const data = [{
-    id:1,
-    idSmall: '1small',
-    name: 'В чём суть электродуговой сварки штучными электродами?',
-    full: 'При электродуговой сварке при помощи электрической дуги происходит расплавление металла стержня электрода и металла детали, при этом производится защита места плавки от воздействия окружающей атмосферы.'
-},
-{
-    id:2,
-    idSmall: '2small',
-    name: 'В чём суть электродуговой сварки штучными электродами?',
-    full:  'При электродуговой сварке при помощи электрической дуги происходит расплавление металла стержня электрода и металла детали, при этом производится защита места плавки от воздействия окружающей атмосферы.'
+import ChartComponent from "./charts/ChartComponent.vue";
 
-}]
+const openLineChart = (chart) => {
+    document.getElementById(chart).classList.toggle("hidden");
+}
 
 
 </script>
