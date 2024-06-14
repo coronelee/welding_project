@@ -1,16 +1,18 @@
 <template>
-    <div class="w-full h-full">
+
+    <div class="flex justify-end items-center flex-col gap-2 w-full overflow-scroll">
         <div class="w-full flex justify-center px-4 py-4 items-center">
             <img :src="data[0].img" class="w-[300px]" alt="">
         </div>
         <div
-            class="text-3xl w-full h-[60%] bg-white rounded-t-lg flex justify-between items-center px-4  flex-col pt-4">
+            class="text-3xl w-full h-[60%] bg-white rounded-t-lg flex justify-between items-center px-6  flex-col pt-4">
             <div class="flex justify-start items-center flex-col gap-2 overflow-scroll">
                 <span class="font-Manrope_Bold text-[24px]">{{ data[0].name }}</span>
                 <span class="font-Manrope_Medium text-[16px] ">{{ data[0].discription }}</span>
             </div>
         </div>
     </div>
+
 </template>
 
 <script setup>
