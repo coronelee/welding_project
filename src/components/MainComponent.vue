@@ -1,5 +1,5 @@
 <template>
-     <div class="w-full h-full flex justify-end items-start   flex-col animate-[showMain_0.5s_ease_1]">
+     <div class="w-full h-dvh flex justify-end items-start   flex-col animate-[showMain_0.5s_ease_1]">
         <CheckComponent :first_name="first_name" v-if="page === 'check'"/>
         <BaseComponent  v-if="page === 'base'"/>
         <ProfileComponent :first_name="first_name" :username="username" v-if="page === 'profile'"/>
