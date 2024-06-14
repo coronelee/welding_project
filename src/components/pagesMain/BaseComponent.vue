@@ -1,5 +1,5 @@
 <template>
-    <div class="text-3xl w-full h-full bg-white rounded-t-lg flex justify-between items-center px-4  flex-col pt-16">
+    <div class="text-3xl w-full h-full bg-white rounded-t-lg flex justify-between items-center  flex-col pt-16">
         <div class="flex justify-start items-center flex-col gap-2 w-full overflow-scroll">
             <span class="font-Manrope_Bold text-[24px]">База знаний</span>
             <ItemBaseComponent name="Процент дефектных швов" :data="data[0]" typeChart="line" />
