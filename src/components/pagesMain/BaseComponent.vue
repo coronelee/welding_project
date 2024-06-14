@@ -27,16 +27,16 @@
             </div>
             <div
                 class="font-Manrope_Medium text-[16px] w-full border border-[#6BACE4] rounded-lg flex justify-center items-center flex-col">
-                <span class="w-full py-2 bg-[#6BACE4] text-white rounded-t-lg px-4 " @click="openLineChart('bar')">
+                <span class="w-full py-2 bg-[#6BACE4] text-white rounded-t-lg px-4 " @click="openLineChart('doughnut')">
                     Наиболее распространенный дефект
                 </span>
-                <div id="bar" class="hidden ">
+                <div id="doughnut" class="hidden ">
                     <div class="flex flex-col px-4 font-Manrope_Medium text-[16px] text-[#5F5F5F]">
                         <span>
                             $имя-дефетка - $число встретился
                         </span>
                     </div>
-                    <ChartComponent typechart="bar" />
+                    <ChartComponent typechart="doughnut" />
                 </div>
             </div>
             <div
@@ -44,13 +44,13 @@
                 <span class="w-full py-2 bg-[#6BACE4] text-white rounded-t-lg px-4 " @click="openLineChart('doughnut')">
                     Число дефектов/период
                 </span>
-                <div id="doughnut" class="hidden ">
+                <div id="bar" class="hidden ">
                     <div class="flex flex-col px-4 font-Manrope_Medium text-[16px] text-[#5F5F5F]">
                         <span class="">
                             За сегодня: $имя дефекта - $число
                         </span>
                     </div>
-                    <ChartComponent typechart="doughnut" />
+                    <ChartComponent typechart="bar" />
                 </div>
             </div>
         </div>
