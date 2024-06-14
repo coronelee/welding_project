@@ -1,8 +1,7 @@
 <template>
 
-    <div class="w-full h-[15%] flex justify-start px-4 items-center"><span
-            class="font-Manrope_Bold text-[16px]">Здравствуйте, {{ first_name }} 😉</span> </div>
-    <div class="text-3xl w-full h-[85%] bg-white rounded-t-lg flex justify-between items-center  py-6 px-4  flex-col">
+     
+    <div class="text-3xl w-full h-full bg-white rounded-t-lg flex justify-between items-center  py-6 px-4  flex-col">
         <div class="flex justify-center items-center flex-col gap-2">
             <span class="font-Manrope_Bold text-[24px]">База знаний</span>
             <div @click="showFull(i.id, i.idSmall)" v-for="i in data" :key="i" class="flex flex-col items-center justify-between leading-6 border rounded-lg border-[#6BACE4]  font-Manrope_Medium text-[16px]">

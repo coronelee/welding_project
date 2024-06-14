@@ -26,7 +26,8 @@
 import { watch, onMounted } from 'vue';
 const props = defineProps({
     showEnterCode: Function,
-    number: String
+    number: String,
+    code: String
 })
 const goToRegistration = () => {
     window.location.hash = '#/registrationNewAccount';
@@ -37,8 +38,12 @@ onMounted(() => {
 })
 const code = (input) => {
     if (input == 'enter') {
-        console.log(document.getElementById('codeSymbol1').value + document.getElementById('codeSymbol2').value + document.getElementById('codeSymbol3').value + document.getElementById('codeSymbol4').value)
-        document.location.href = '#/main'
+       
+        let codeInputs = document.getElementById('codeSymbol1').value + document.getElementById('codeSymbol2').value + document.getElementById('codeSymbol3').value + document.getElementById('codeSymbol4').value
+        console.log(props.code + '  '  + codeInputs)
+        if(props.code == codeInputs){
+            document.location.href = '#/main'
+        }
     } else {
         document.getElementById('codeSymbol' + input).focus()
     }

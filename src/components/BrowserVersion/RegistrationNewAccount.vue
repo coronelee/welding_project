@@ -14,7 +14,7 @@
                 @click="sendCode()">Получить код</button>
         </div>
 
-        <div class="flex justify-center items-center gap-4 flex-col">
+        <!-- <div class="flex justify-center items-center gap-4 flex-col">
             <span class="font-Manrope_Medium">Или войдите иначе</span>
             <div class="flex justify-center items-center gap-4 [&>div]:h-[60px] [&>div]:w-[60px] [&>div]:bg-[#EDEDED] [&>div]:rounded-lg
                 [&>div]:flex [&>div]:justify-center [&>div]:items-center [&>div>img]:w-[32px]">
@@ -23,8 +23,8 @@
                     <TGLogin />
                 </div>
             </div>
-        </div>
-        <EnterCodeComponent v-if="enterCode" :showEnterCode="showEnterCode" :number="number" />
+        </div> -->
+        <EnterCodeComponent v-if="enterCode" :showEnterCode="showEnterCode" :number="number" :code="code"/>
     </div>
 </template>
 <script setup>
@@ -35,12 +35,12 @@ import axios from 'axios';
 import IMask from 'imask';
 const phoneInput = ref(null);
 const enterCode = ref(false);
-
+const code = ref(null);
 onMounted(() => {
     const mask = IMask(phoneInput.value, {
         mask: '(000) 000-00-00'
     });
-  
+
 });
 let number;
 const sendCode = () => {
@@ -54,19 +54,10 @@ const sendCode = () => {
     }
     else {
         showEnterCode()
-
-
-         
-
-        
-        // axios.post('http://localhost:8081/api/v1/user/auth', {
-        //     phone: '7' + number,
-        //     name: null
-        // }).then((response) => {
-        //     console.log(response.data)
-        // }).catch((error) => {
-        //     console.log(error)
-        // })
+        axios.get('http://localhost:8081/api/v1/user/auth?phone=7' + number + '&name=string').then((response) => {
+            code.value = response.data.code
+            console.log(code.value)
+        });
     }
 }
 
