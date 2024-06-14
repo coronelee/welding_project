@@ -1,17 +1,12 @@
 <template><input type="file" id="file" class="hidden" @change="onFileChange">
 <input type="file" id="camera" accept="image/*" capture="camera" class="hidden" @change="onFileChange">
     <div v-if="!showNavFile" id="nav"
-        class="transition-all duration-300 w-full h-[50px] animate-[showNav_0.3s_ease_1] flex gap-2 [&>button]:w-full [&>button]:h-full   [&>button]:bg-contain [&>button]:bg-center [&>button]:bg-no-repeat rounded-lg">
-        <button class="bg-[url('/images/check.svg')]" @click="showNav()"></button>
-        <button class="bg-[url('/images/base.svg')]"></button>
-        <!-- <button class="bg-[url('/images/top.svg')]"></button> -->
-        <button class="bg-[url('/images/profile.svg')]" @click="showProfile()"></button>
+        class="transition-all duration-300 w-full h-[50px] flex gap-2 [&>button]:w-full [&>button]:h-full   [&>button]:bg-contain [&>button]:bg-center [&>button]:bg-no-repeat rounded-lg">
+        <button  @click="changePage('check')"> <img src="/images/check.svg" class="w-[48px] h-[40px]" :style="{filter: page == 'check' ? 'invert(100%)' : 'invert(0%)'}" alt=""></button>
+        <button  @click="changePage('base')"><img src="/images/base.svg" :style="{filter: page == 'base' ? 'invert(100%)' : 'invert(0%)'}"  alt=""></button>
+        <button  @click="changePage('profile')"><img src="/images/profile.svg" :style="{filter: page == 'profile' ? 'invert(100%)' : 'invert(0%)'}" alt=""></button>
     </div>
-    <!-- <div v-if="showNavFile" id="navFile"
-        class="w-full h-[50px] transition-all duration-300 animate-[showNav_0.3s_ease_1] flex gap-4 justify-center items-center [&>button]:w-full [&>button]:h-full rounded-lg">
-        <button @click="downloadImage('camera')" class="bg-[#0A3D7F] rounded-lg text-white">Сделать фото</button>
-        <button @click="downloadImage('file')" class="bg-[#0A3D7F] rounded-lg text-white">Выбрать из галереи</button>
-    </div> -->
+    
 </template>
 
 <script setup>
@@ -20,7 +15,9 @@ import { ref, watch } from "vue";
 const props = defineProps({
     downloadImage: Function,
     onFileChange: Function,
-    closeNavFile: Boolean
+    closeNavFile: Boolean,
+    page: String,
+    changePage: Function
 })
 
 const showProfile = () => {
