@@ -14,6 +14,7 @@ const page = ref('base');
 
 const changePage = (pageName) => {
   page.value = pageName
+  console.log(page.value)
 }
 const closeNavFile = ref(false);
 const downloadImage = (id) => {
