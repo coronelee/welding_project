@@ -57,7 +57,6 @@ const chartData = computed(() => ({
         },
     }
 }));
-
 const chartOptions = computed(() => ({
     responsive: true,
     maintainAspectRatio: true,
