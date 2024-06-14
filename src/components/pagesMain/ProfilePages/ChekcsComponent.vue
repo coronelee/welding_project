@@ -11,6 +11,7 @@
       <span class="font-Manrope_Medium text-[16px]">Вы можете загрузить фотографию или сделать новую и отправить на проверку</span>
 
     </div>
+    <div class=""></div>
     <button
       class="w-[320px] h-[50px] bg-[#2C50CC] rounded-lg text-white font-Manrope_Bold text-[16px] flex justify-center items-center gap-2"
     >
