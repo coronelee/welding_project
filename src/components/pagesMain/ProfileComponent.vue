@@ -7,7 +7,7 @@
             </div>
             <span class="font-Manrope_Bold text-[20px]">{{ role }}</span>
             <div class="flex flex-col w-full justify-start [&>*]:font-Manrope_Medium [&>*]:text-[20px]">
-                <span class="text-[#5F5F5F]">Telegram: <span class="text-black">@{{ tg }}</span></span>
+                <span class="text-[#5F5F5F]">Telegram: <span class="text-black">@{{ username }}</span></span>
                 <span class="text-[#5F5F5F]">Телефон: <span class="text-black">+{{ phone }}</span></span>
             </div>
             <div class="w-full font-Manrope_Bold text-[16px] [&>div]:h-[50px] [&>div]:border-b border-[#EDEDED]">
@@ -42,7 +42,8 @@
 
 <script setup>
 defineProps({
-    first_name: String
+    first_name: String,
+    username: String
 })
 
 // let first_name = "Anton"
