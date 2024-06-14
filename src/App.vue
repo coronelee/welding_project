@@ -31,6 +31,8 @@ const telegram = new TelegramWebAppContainer();
 
 telegram.WebApp.ready();
 const first_name = telegram.WebApp.initDataUnsafe?.user?.first_name;
+const username = telegram.WebApp.initDataUnsafe?.user?.username;
+
 telegram.WebApp.expand();
 
 
@@ -41,5 +43,5 @@ if(!first_name) {
 
 </script>
 <template>
-  <div  class="w-screen h-screen overflow-hidden font-mono bg-[#f3f8fa]"><component :is="currentView" :first_name="first_name"/></div>
+  <div  class="w-screen h-screen overflow-hidden font-mono bg-[#f3f8fa]"><component :is="currentView" :username="username" :first_name="first_name"/></div>
 </template>

@@ -2,7 +2,7 @@
      <div class="w-full h-full flex justify-end items-start   flex-col animate-[showMain_0.5s_ease_1]">
         <CheckComponent :first_name="first_name" v-if="page === 'check'"/>
         <BaseComponent  v-if="page === 'base'"/>
-        <ProfileComponent :first_name="first_name" v-if="page === 'profile'"/>
+        <ProfileComponent :first_name="first_name" :username="username" v-if="page === 'profile'"/>
         <NavBar :downloadImage="downloadImage" :onFileChange="onFileChange" :closeNavFile="closeNavFile" :page="page" :changePage="changePage"/>
      </div>
 </template>
@@ -16,7 +16,8 @@ import { ref } from "vue";
 const imageSrc = ref('/images/noImage.jpg');
 const page = ref('check');
 const props = defineProps({
-  first_name: String
+  first_name: String,
+  username: String
 })
 const changePage = (pageName) => {
   page.value = pageName
