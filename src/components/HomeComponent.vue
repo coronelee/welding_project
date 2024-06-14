@@ -12,7 +12,7 @@ const getAnim = () => {
   let el = document.getElementById('home');
   el.classList.add('animate-[closeWelcome_0.5s_ease_1]');
   if (!props.username) {
-    document.location.href = '#/Auth';
+    document.location.href = '#/registrationNewAccount';
   }
 }
 const props = defineProps({
