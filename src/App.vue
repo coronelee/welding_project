@@ -36,7 +36,7 @@ if (!first_name) {
 
 </script>
 <template>
-  <component :is="HomeComponent" />
+  <component :is="HomeComponent" :username="username" />
   <div class="w-screen h-screen overflow-hidden font-mono bg-[#f3f8fa]">
     <component :is="currentView" :username="username" :first_name="first_name" />
   </div>

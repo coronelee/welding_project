@@ -11,8 +11,13 @@
 const getAnim = () => {
   let el = document.getElementById('home');
   el.classList.add('animate-[closeWelcome_0.5s_ease_1]');
+  if (!props.username) {
+    document.location.href = '#/Auth';
+  }
 }
-
+const props = defineProps({
+  username: String
+})
 </script>
 
 <style scoped>
