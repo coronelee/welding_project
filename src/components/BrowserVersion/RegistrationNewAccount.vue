@@ -2,7 +2,7 @@
     <div class="w-screen h-screen flex justify-between py-44 items-center flex-col ">
         <div class="flex justify-center items-center flex-col gap-6 ">
             <div class="text-[24px] font-bold text-black font-Manrope_Bold">Вход или регистрация</div>
-            <div class="text-[16px] text-[#5F5F5F] font-Manrope_Medium">Мы отправим вам код, он придёт в СМС</div>
+            <div class="text-[16px] text-[#5F5F5F] font-Manrope_Medium">На этот номер поступит звонок</div>
             <div
                 class="flex gap-2 [&>input]:h-[50px] [&>input]:rounded-lg [&>input]:bg-transparent &>input]:text-[20px] [&>input]:border [&>input]:border-[#2C50CC] [&>input]:font-Manrope_Bold">
                 <input type="text" class="w-[65px] text-center" value="+7" disabled>
@@ -12,8 +12,9 @@
                     class="underline">политикой конфиденциальности</span></div>
             <button class="w-[320px] h-[50px] bg-[#2C50CC] rounded-lg text-white font-Manrope_ExtraBold"
                 @click="sendCode()">Получить код</button>
+                <a href="#/main" class="font-Manrope_Medium text-[15px] text-[#5F5F5F]">Пропустить регистрацию</a>
         </div>
-
+        
         <!-- <div class="flex justify-center items-center gap-4 flex-col">
             <span class="font-Manrope_Medium">Или войдите иначе</span>
             <div class="flex justify-center items-center gap-4 [&>div]:h-[60px] [&>div]:w-[60px] [&>div]:bg-[#EDEDED] [&>div]:rounded-lg
