@@ -15,6 +15,7 @@
     "axios": "^1.7.2",
     "imask": "^7.6.1",
     "sms_ru": "^0.0.1",
+    "vite": "^5.3.1",
     "vue3-telegram-login": "^1.1.0"
   },
   "devDependencies": {
@@ -27,7 +28,6 @@
     "eslint-plugin-vue": "^9.23.0",
     "postcss": "^8.4.38",
     "prettier": "^3.2.5",
-    "tailwindcss": "^3.4.4",
-    "vite": "^5.2.8"
+    "tailwindcss": "^3.4.4"
   }
 }
