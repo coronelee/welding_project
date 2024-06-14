@@ -1,8 +1,8 @@
 <template>
 <input type="file" id="file" class="hidden" @change="onFileChange">
 <input type="file" id="camera" accept="image/*" capture="camera" class="hidden" @change="onFileChange">
-    <div v-if="!showNavFile" id="nav"
-        class="transition-all duration-300 w-full border-t border-[#D9D9D9] h-[50px] flex gap-2 [&>button]:w-full [&>button]:h-full [&>button]:flex [&>button]:justify-center [&>button]:items-center [&>button]:rounded-lg">
+    <div id="nav"
+        class="transition-all bg-white duration-300 w-full border-t border-[#D9D9D9] h-[50px] flex gap-2 [&>button]:w-full [&>button]:h-full [&>button]:flex [&>button]:justify-center [&>button]:items-center [&>button]:rounded-lg">
         <button @click="changePage('check')">
 
             <svg width="48.000000" height="41.400391" viewBox="0 0 48 41.4004" fill="none"

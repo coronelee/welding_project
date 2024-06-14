@@ -41,5 +41,5 @@ if(!first_name) {
 
 </script>
 <template>
-  <div  class="w-screen h-screen overflow-hidden font-mono"><component :is="currentView" :first_name="first_name"/></div>
+  <div  class="w-screen h-screen overflow-hidden font-mono bg-[#f3f8fa]"><component :is="currentView" :first_name="first_name"/></div>
 </template>
