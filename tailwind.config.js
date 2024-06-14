@@ -15,7 +15,16 @@ export default {
           '0%': { transform: 'translateY(100%)' },
           '100%': { transform: 'translateY(0)' },
         },
-      }
+        showEnterCodeForm: {
+          '0%': { height: '0' },
+          '100%': { height: '85%' },
+        },
+      },
+      fontFamily: {
+        Manrope_Bold: ["Manrope_Bold", "sans-serif"],
+        Manrope_Medium: ["Manrope_Medium", "sans-serif"],
+        Manrope_ExtraBold: ["Manrope_Bold", "sans-serif"],
+      },
     },
   },
   plugins: [],
