@@ -1,59 +1,10 @@
 <template>
-    <div
-        class="text-3xl w-full h-full bg-white rounded-t-lg flex justify-between items-center  py-6 px-4  flex-col pt-16">
+    <div class="text-3xl w-full h-full bg-white rounded-t-lg flex justify-between items-center px-4  flex-col pt-16">
         <div class="flex justify-start items-center flex-col gap-2 w-full overflow-scroll">
             <span class="font-Manrope_Bold text-[24px]">База знаний</span>
-            <div
-                class="font-Manrope_Medium text-[16px] w-full border border-[#6BACE4] rounded-lg flex justify-center items-center flex-col">
-                <span class="w-full py-2 bg-[#6BACE4] text-white rounded-t-lg px-4 " @click="openLineChart('line')">
-                    Процент дефектных швов
-                </span>
-                <div id="line" class="hidden ">
-                    <div class="flex flex-col px-4 font-Manrope_Medium text-[16px] text-[#5F5F5F]">
-                        <span class="">
-                            Проверки - $число
-                        </span>
-                        <span>
-                            Общее кол-во не дефектых - $число
-                        </span>
-                        <span>
-                            Кол-во дефектных - $число
-                        </span>
-                        <span>
-                            Процент дефектов - $число
-                        </span>
-                    </div>
-                    <ChartComponent typechart="line" />
-                </div>
-            </div>
-            <div
-                class="font-Manrope_Medium text-[16px] w-full border border-[#6BACE4] rounded-lg flex justify-center items-center flex-col">
-                <span class="w-full py-2 bg-[#6BACE4] text-white rounded-t-lg px-4 " @click="openLineChart('doughnut')">
-                    Наиболее распространенный дефект
-                </span>
-                <div id="doughnut" class="hidden ">
-                    <div class="flex flex-col px-4 font-Manrope_Medium text-[16px] text-[#5F5F5F]">
-                        <span>
-                            $имя-дефетка - $число встретился
-                        </span>
-                    </div>
-                    <ChartComponent typechart="doughnut" />
-                </div>
-            </div>
-            <div
-                class="font-Manrope_Medium text-[16px] w-full border border-[#6BACE4] rounded-lg flex justify-center items-center flex-col">
-                <span class="w-full py-2 bg-[#6BACE4] text-white rounded-t-lg px-4 " @click="openLineChart('bar')">
-                    Число дефектов/период
-                </span>
-                <div id="bar" class="hidden ">
-                    <div class="flex flex-col px-4 font-Manrope_Medium text-[16px] text-[#5F5F5F]">
-                        <span class="">
-                            За сегодня: $имя дефекта - $число
-                        </span>
-                    </div>
-                    <ChartComponent typechart="bar" />
-                </div>
-            </div>
+            <ItemBaseComponent name="Процент дефектных швов" :data="data[0]" typeChart="line" />
+            <ItemBaseComponent name="Наиболее распространенный дефект" :data="data[1]" typeChart="doughnut" />
+            <ItemBaseComponent name="Число дефектов/период" :data="data[2]" typeChart="bar" />
         </div>
 
     </div>
@@ -61,10 +12,20 @@
 
 <script setup>
 import ChartComponent from "./charts/ChartComponent.vue";
-
-const openLineChart = (chart) => {
-    document.getElementById(chart).classList.toggle("hidden");
-}
-
+import ItemBaseComponent from "./charts/ItemBaseComponent.vue";
+const data = [
+    {
+        stroke1: 'Проверки -  15',
+        stroke2: 'Oбщее кол-во не дефектых - 12',
+        stroke3: 'Oбщее кол-во дефектных - 3',
+        stroke4: 'Oбщее процент дефектов - 12%',
+    },
+    {
+        stroke1: 'Проваренная деталь - встретился 2 раза'
+    },
+    {
+        stroke1: 'За сегодня: $имя дефекта - $число'
+    }
+]
 
 </script>

@@ -1,6 +1,4 @@
 <template>
-    <input type="file" id="file" class="hidden" @change="onFileChange">
-    <input type="file" id="camera" accept="image/*" capture="camera" class="hidden" @change="onFileChange">
     <div id="nav"
         class="transition-all z-10 bg-white duration-300 w-full border-t border-[#D9D9D9] h-[50px] flex gap-2 [&>button]:w-full [&>button]:h-full [&>button]:flex [&>button]:justify-center [&>button]:items-center [&>button]:rounded-lg">
         <button @click="changePage('check')">
@@ -63,28 +61,11 @@ const props = defineProps({
     page: String,
     changePage: Function
 })
-
-const showProfile = () => {
-    window.location.hash = '#/profile';
-};
-
 const showNavFile = ref(false);
-
 watch(() => props.closeNavFile, () => {
     document.getElementById('navFile').style.transform = 'translateY(150%)';
     setTimeout(() => {
         showNavFile.value = !showNavFile.value;
     }, 300)
 })
-
-
-
-const showNav = () => {
-    document.getElementById('nav').style.transform = 'translateY(150%)';
-    setTimeout(() => {
-        showNavFile.value = !showNavFile.value;
-        window.location.hash = '#/main';
-
-    }, 300)
-}
 </script>
