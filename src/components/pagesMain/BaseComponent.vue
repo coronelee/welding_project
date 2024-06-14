@@ -41,7 +41,7 @@
             </div>
             <div
                 class="font-Manrope_Medium text-[16px] w-full border border-[#6BACE4] rounded-lg flex justify-center items-center flex-col">
-                <span class="w-full py-2 bg-[#6BACE4] text-white rounded-t-lg px-4 " @click="openLineChart('doughnut')">
+                <span class="w-full py-2 bg-[#6BACE4] text-white rounded-t-lg px-4 " @click="openLineChart('bar')">
                     Число дефектов/период
                 </span>
                 <div id="bar" class="hidden ">
