@@ -1,6 +1,6 @@
 <template>
     <div class="text-3xl w-full h-full bg-white rounded-t-lg flex justify-between items-center  py-6 px-4  flex-col">
-        <div class="flex justify-center items-center flex-col gap-2 w-full">
+        <div class="flex justify-center items-center flex-col gap-2 w-full overflow-scroll">
             <span class="font-Manrope_Bold text-[24px]">База знаний</span>
             <div
                 class="font-Manrope_Medium text-[16px] w-full border border-[#6BACE4] rounded-lg flex justify-center items-center flex-col">
