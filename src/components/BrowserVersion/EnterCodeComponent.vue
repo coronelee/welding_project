@@ -38,7 +38,7 @@ onMounted(() => {
 const code = (input) => {
     if (input == 'enter') {
         console.log(document.getElementById('codeSymbol1').value + document.getElementById('codeSymbol2').value + document.getElementById('codeSymbol3').value + document.getElementById('codeSymbol4').value)
-        
+        document.location.href = '#/MainComponent'
     } else {
         document.getElementById('codeSymbol' + input).focus()
     }
