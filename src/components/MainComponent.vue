@@ -1,8 +1,11 @@
 <template>
-  <div class="w-full h-dvh flex justify-end items-start  flex-col animate-[showMain_0.5s_ease_1]">
+  <div class="w-full h-full flex justify-end items-start  flex-col animate-[showMain_0.5s_ease_1]">
     <CheckComponent :first_name="first_name" v-if="page === 'check'" />
     <BaseComponent v-if="page === 'base'" />
+    <BaseDefectsComponent v-if="page === 'defects'" />
     <ProfileComponent :first_name="first_name" :username="username" v-if="page === 'profile'" />
+
+
     <NavBar :downloadImage="downloadImage" :onFileChange="onFileChange" :closeNavFile="closeNavFile" :page="page"
       :changePage="changePage" />
   </div>
@@ -13,6 +16,7 @@ import NavBar from "./NavBar.vue";
 import CheckComponent from "./pagesMain/CheckComponent.vue";
 import BaseComponent from "./pagesMain/BaseComponent.vue";
 import ProfileComponent from "./pagesMain/ProfileComponent.vue";
+import BaseDefectsComponent from "./pagesMain/BaseDefectsComponent.vue";
 import { ref } from "vue";
 const imageSrc = ref('/images/noImage.jpg');
 const page = ref('check');
