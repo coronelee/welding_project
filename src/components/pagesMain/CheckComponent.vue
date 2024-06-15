@@ -1,22 +1,99 @@
 <template>
-
-    <div class="w-full h-[15%] flex justify-start px-4 items-center"><span
-            class="font-Manrope_Bold text-[16px]">Здравствуйте, {{ first_name }} 😉</span> </div>
-    <div class="text-3xl w-full h-[85%] bg-white rounded-t-lg flex justify-between items-center py-6 px-4 flex-col">
-        <div class="flex justify-center items-center flex-col gap-2">
-            <span class="font-Manrope_Bold text-[24px]">Мои проверки</span>
-            <span class="font-Manrope_Medium text-[16px]">Вы еще не осуществляли проверок :(</span>
+    <div :style="resultData.length < 1 ? 'height: 15%' : 'height: 35%'"
+        class="w-full flex justify-start px-4 items-center">
+        <span v-if="resultData.length < 1" class="font-Manrope_Bold text-[16px]">
+            Здравствуйте, {{ first_name }} 😉
+        </span>
+        <div v-else id="imageContainer" class="w-full h-full flex justify-center items-center p-8"></div>
+    </div>
+    <div :style="resultData.length < 1 ? 'height: 85%' : 'height: 65%'"
+        class="text-3xl transition-all duration-1000  w-full bg-white rounded-t-lg drop-shadow-lg flex justify-between items-center py-6 px-4 flex-col">
+        <div class="flex justify-top items-center flex-col gap-2 overflow-scroll">
+            <span class="font-Manrope_Bold text-[24px]">
+                {{ resultData.category ? resultData.category : 'Ваши проверки' }}
+            </span>
+            <span class="font-Manrope_Medium text-[16px]" id="desription">
+                {{ resultData.description ? resultData.description :
+                    'Вы еще не осуществляли проверок :(' }}
+            </span>
         </div>
         <button
-            class="w-[320px] h-[50px] bg-[#2C50CC] rounded-lg text-white font-Manrope_Bold text-[16px] flex justify-center items-center gap-2 ">Проверить
-            <img src="/images/scan.svg" class="w-[24px]" alt=""> </button>
+            class="w-[320px] h-[50px] bg-[#2C50CC] rounded-lg text-white font-Manrope_Bold text-[16px] flex justify-center items-center gap-2"
+            @click="loadImage()">{{ resultData.length < 1 ? 'Проверить' : 'Проверить заново' }} <img
+                src="/images/scan.svg" class="w-[24px]" alt=""> </button>
     </div>
-
-
 </template>
 
+
 <script setup>
+import axios from 'axios';
+import { ref, watch } from "vue";
 defineProps({
     first_name: String
 })
+const htmlstring = ref('')
+const resultData = ref([])
+const input = document.createElement('input');
+const loadImage = () => {
+
+    input.type = 'file';
+    input.accept = 'image/*';
+    input.click();
+    input.onchange = () => {
+        const img = new FormData();
+        // onFileChange(input.files[0]);
+        img.append('photo', input.files[0]);
+        axios.post(`http://localhost:8081/api/v1/photo/load`,
+            img,
+            {
+                headers: { "Content-Type": "multipart/form-data" },
+            },).then((response) => {
+                resultData.value = response.data
+                let res = resultData.value.description
+                const container = document.getElementById('container');
+                document.getElementById('desription').insertAdjacentHTML('beforeend', text);
+
+                console.log(res.description)
+            })
+    }
+
+}
+
+watch(resultData, () => {
+    const file = input.files[0];
+    const reader = new FileReader();
+    reader.onload = () => {
+        if (reader.result) {
+            const img = document.createElement('img');
+            const imageContainer = document.getElementById('imageContainer');
+            if (imageContainer) {
+                img.src = reader.result;
+                imageContainer.innerHTML = '';
+                imageContainer.appendChild(img);
+            }
+        }
+    }
+    reader.readAsDataURL(file);
+})
+
+
 </script>
+
+<!-- category
+: 
+"Трещина сварного шва"
+description
+: 
+"<b>Самым серьезным видом сварочного дефекта считается трещина сварного шва</b>, которая не принимается почти всеми отраслевыми стандартами. Она может появиться на поверхности, в металле сварного шва или в зоне воздействия сильного тепла. В зависимости от температуры, при которой они возникают, существуют разные типы трещин:\n<br><b>Горячие трещины.</b> Они появляются в процессе сварки или в процессе кристаллизации сварного соединения. Температура в этот момент может подняться выше 10 000 °C.<br><b>Холодные трещины.</b> Эти трещины появляются после завершения сварки и снижения температуры металла. Они могут образоваться спустя несколько часов или даже дней после проведения сварочных работ. Чаще всего это происходит при сварке стали. Причиной этого дефекта обычно являются деформация структуры стали.<br><b>Кратеры.</b> Обычно они образуются ближе к концу сварного шва. Когда сварочная ванна охлаждается и затвердевает, ей необходимо иметь достаточный объем, чтобы преодолеть усадку металла шва. В противном случае образуется кратерная трещина.<br>Трещины дефект сварного соединения<br>"
+id
+: 
+1
+preventing
+: 
+"  <b>Способы предупреждения:</b>\n\n  - Правильно выбирайте основной металл и сварочные материалы\n  - Выбирайте оптимальный режим сварки\n  - Обеспечьте надлежащее охлаждение зоны сварки\n  - Используйте правильную геометрию швов\n  - Удалите загрязнения со свариваемого металла\n  - Используйте подходящий металл\n  - Убедитесь, что свариваете достаточную площадь сечения\n  - Используйте правильную скорость сварки и силу тока\n  - Чтобы предотвратить появление кратерных трещин, убедитесь, что кратер заполнен должным образом\n"
+reasons
+: 
+"<b>Причины появления трещин:</b>\n\n- Повышенное содержание углерода и серы в основном металле\n- Повышенная жесткость свариваемой конструкции\n- Загрязнение основного металла\n- Высокая скорость сварки, но низкий ток\n- Неправильная форма шва из-за несоблюдения режима сварки\n- Резкое охлаждение конструкции"
+removal
+: 
+"<b>Способы устранения:</b>\nМесто образования трещины удалить шлифовальным инструментом. Образовавшуюся полость заварить.\n -->

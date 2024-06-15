@@ -36,13 +36,6 @@ const onFileChange = (event) => {
   imageSrc.value = URL.createObjectURL(selectedFile);
   closeNavFile.value = !closeNavFile.value;
 
-  // const img = new FormData();
-  // img.append('photo', selectedFile);
-  // axios.post(`http://localhost:8081/api/v1/photo/load`, 
-  // img,
-  // {
-  //     headers: { "Content-Type": "multipart/form-data"},
-  // },)
 }
 
 
