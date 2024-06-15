@@ -8,17 +8,13 @@
                 <div>Подрезы</div>
                 <div>Возникновение пор</div>
             </div>
-            <!-- <img id="top" src="/images/arrow-right.svg" class=" h-[24px] transform rotate-[270deg]"
-                @click="previousImage" alt=""> -->
-            <img id="left" src="/images/arrow-right.svg" class="h-[24px] transform rotate-180" @click="previousItem">
+            <!-- <img id="left" src="/images/arrow-right.svg" class="h-[24px] transform rotate-180" @click="previousItem"> -->
             <img id="photo" :src="'/defects/' + itemEdit + '/' + imageEdit + '.png'"
                 class="w-[300px] h-[200px] rounded-xl" alt="">
-            <img id="right" src="/images/arrow-right.svg" class="h-[24px]" @click="nextItem">
+            <!-- <img id="right" src="/images/arrow-right.svg" class="h-[24px]" @click="nextItem"> -->
             <button @click="nextImage" id="bot"
                 class="w-[300px] h-[50px] bg-[#2C50CC] rounded-lg text-white font-Manrope_Bold text-[16px] flex justify-center items-center gap-2 ">Следующий
                 пример</button>
-            <!-- <img src="/images/arrow-right.svg"
-                    class="h-[24px] transform rotate-90" alt=""> -->
         </div>
         <div id="text" :style="!openTextValue ? 'height: 40%;' : 'height: 80%'"
             class="transition-all duration-1000 text-3xl w-full bg-white rounded-t-xl flex justify-between items-center px-6 drop-shadow-2xl  flex-col pt-4">
@@ -52,13 +48,13 @@ const itemEdit = ref(0);
 
 const nextItem = () => {
     itemEdit.value = (itemEdit.value + 1) % data.length;
-    console.log(itemEdit.value)
 }
 const previousItem = () => {
     itemEdit.value = (itemEdit.value - 1 + data.length) % data.length;
-    console.log(itemEdit.value)
-
 }
+
+
+
 
 const data = [
     {
@@ -91,26 +87,40 @@ const openText = () => {
 }
 
 onMounted(() => {
-    // const targetEl = document.getElementById('target');
-    // const textEl = document.getElementById('text');
-    // let startY = 0;
-    // let startHeight = 0;
+    const targetEl = document.getElementById('container');
+    let startX = 0;
+    let startWidth = 0;
+    let newCords = 0;
+    targetEl.addEventListener('touchstart', touchStart);
+    targetEl.addEventListener('touchmove', touchMove);
+    targetEl.addEventListener('touchend', touchEnd);
 
-    // targetEl.addEventListener('touchstart', touchStart);
-    // targetEl.addEventListener('touchmove', touchMove);
-    // targetEl.addEventListener('touchend', touchEnd);
+    function touchStart(e) {
+        startX = e.touches[0].clientX;
+        startWidth = targetEl.offsetWidth;
+    }
+
+    function touchMove(e) {
+        const deltaX = e.touches[0].clientX - startX;
+        newCords = startWidth + deltaX;
+    }
+
+
 
     // function touchStart(e) {
     //     startY = e.touches[0].clientY;
     //     startHeight = textEl.offsetHeight; // Используем offsetHeight для получения текущей высоты элемента
     // }
 
-    // function touchMove(e) {
-    //     const deltaY = e.touches[0].clientY - startY;
-    //     const newHeight = startHeight - deltaY; // изменение знака для движения вверх
-    //     textEl.style.height = Math.max(newHeight, 0) + 'px';
-    //     textEl.style.transition = 'height 0.3s ease-out';
-    // }
+    function touchEnd(e) {
+
+        if (newCords > startWidth) {
+            nextItem()
+        }
+        else if (newCords < startWidth) {
+            previousItem()
+        }
+    }
 
     // function touchEnd(e) {
     //     requestAnimationFrame(() => {
