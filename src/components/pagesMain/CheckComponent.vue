@@ -4,7 +4,9 @@
         <span v-if="resultData.length < 1" class="font-Manrope_Bold text-[16px]">
             Здравствуйте, {{ first_name }} 😉
         </span>
-        <img v-else :src="resultData.photoUrl" alt="" class="rounded-xl w-[200px]">
+        <div v-else class="flex justify-center items-center w-full">
+            <img :src="resultData.photoUrl" alt="" class="rounded-xl w-[250px]">
+        </div>
     </div>
     <div :style="resultData.length < 1 ? 'height: 85%' : 'height: 65%'"
         class="text-3xl transition-all duration-1000  w-full bg-white rounded-t-lg drop-shadow-lg flex justify-between items-center py-6 px-4 flex-col">
