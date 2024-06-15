@@ -1,7 +1,6 @@
 <template>
     <div class="flex justify-end items-center flex-col gap-2 w-full h-full">
-        <div class="w-full px-4 py-4 [&>img]:flex [&>img]:w-full justify-center items-center transition-all duration-1000"
-            id="container">
+        <div class="w-full px-4 py-4  justify-center items-center transition-all duration-1000" id="container">
             <!-- <div id="top"
                 class="w-full  flex justify-center items-center flex-wrap gap-2 [&>div]:rounded-full [&>div]:border [&>div]:border-[#C2C2C2]  [&>div]:px-2 [&>div]:py-1">
                 <div>Горячие трещины</div>
