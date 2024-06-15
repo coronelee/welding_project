@@ -35,12 +35,10 @@ onMounted(() => {
     if (props.typechart == 'bar') {
         axios.get('http://localhost:8081/api/v1/text-stats/categories')
             .then((response) => {
-
                 dataBase.value = response.data;
                 let arr = []
                 for (let i = 0; i < dataBase.value.length; i++) {
                     arr[i] = dataBase.value[i].quantity
-
                 }
                 quantity.value = arr
                 console.log(arr)
@@ -148,7 +146,6 @@ const chartOptions = computed(() => ({
 
 
 
-
 </script>
 
 <template>
@@ -160,4 +157,5 @@ const chartOptions = computed(() => ({
     <LineChart :chart-options="chartOptions" :chart-data="chartData" v-if="typechart === 'line'" />
     <BarChart :chart-options="chartOptions" :chart-data="chartData" v-if="typechart === 'bar'" />
     <DoughnutChart :chart-options="chartOptions" :chart-data="chartData" v-if="typechart === 'doughnut'" />
+
 </template>
