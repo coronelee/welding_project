@@ -6,7 +6,7 @@
         </span>
         <div :id="typeChart" class="hidden">
             <div class="flex flex-col px-4 font-Manrope_Medium text-[16px] text-[#5F5F5F]">
-                <span v-for="(item, index) in data" :key="index" class="">{{ item }}</span>
+                <!-- <span v-for="(item, index) in data" :key="index" class="">{{ item }}</span> -->
             </div>
             <ChartComponent :typechart="typeChart" />
         </div>

@@ -4,47 +4,46 @@ import axios from 'axios';
 import { Chart, registerables } from 'chart.js';
 import { computed } from 'vue';
 import { LineChart, BarChart, DoughnutChart } from 'vue-chart-3';
+import { c } from 'vite/dist/node/types.d-aGj9QkWt';
 let rand = [];
-let label = [];
 const props = defineProps({
     typechart: String
 })
-const random = () => {
-    for (let i = 0; props.typechart == 'doughnut' ? i < 7 : i < 40; i++) {
-        rand.push(Math.floor(Math.random() * 100))
-    }
-}
-const labelCreate = () => {
 
-    for (let i = 0; props.typechart == 'doughnut' ? i < 7 : i < 30; i++) {
-        label.push(i)
-    }
-}
-// labelCreate()
-random()
 Chart.register(...registerables);
 
-onMounted(() => {
-    axios.get('http://localhost:8081/api/v1/text-stats/most-common').then((response) => {
-        if (props.typechart === 'doughnut') {
-            let arr = []
-            for (let i = 0; i < response.data.length; i++) {
-                label.push(response.data[i].category)
-            }
-            console.log(label)
+const quantity = ref(null)
+const dataBase = ref(null);
 
-            // chartData.value.datasets[0].data = arr
-            // console.log(response.data)
-        }
-    })
+onMounted(() => {
+    axios.get('http://localhost:8081/api/v1/text-stats/most-common')
+        .then((response) => {
+            if (props.typechart === 'doughnut') {
+                dataBase.value = response.data;
+                // let arr = []
+                // for (let i = 0; i < dataBase.value.length; i++) {
+                //     arr.push(dataBase.value[i].quantity);
+                // }
+                // quantity.value = arr
+                // for (let i = 0; i < dataBase.value.length; i++) {
+                //     arr.push(response.data[i].quantity)
+                // }
+                // quantity.value = arr
+                // console.log(quantity.value)
+            }
+        })
+        .catch((error) => {
+            console.error('Ошибка:', error);
+        });
 
 })
 
+
+
 const chartData = computed(() => ({
-    labels: label,
     datasets: [
         {
-            data: rand,
+            data: quantity,
             backgroundColor: '#2C50CC',
             borderColor: '#77CEFF',
             borderWidth: 2,
@@ -119,6 +118,9 @@ let data = ref(0)
 </script>
 
 <template>
+    <div class="flex flex-col px-4 font-Manrope_Medium text-[16px] text-[#5F5F5F]">
+        <span v-for="item in dataBase" :key="item.id">{{ item.category }} - {{ item.quantity }}</span>
+    </div>
     <LineChart :chart-options="chartOptions" :chart-data="chartData" v-if="typechart === 'line'" />
     <BarChart :chart-options="chartOptions" :chart-data="chartData" v-if="typechart === 'bar'" />
     <DoughnutChart :chart-options="chartOptions" :chart-data="chartData" v-if="typechart === 'doughnut'" />
