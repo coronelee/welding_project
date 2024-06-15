@@ -1,6 +1,6 @@
 <template>
     <div class="flex justify-end items-center flex-col gap-2 w-full h-full">
-        <div class="w-full px-4 py-4  justify-center items-center transition-all duration-1000" id="container">
+        <div class="w-full px-4 py-4  justify-center flex items-center transition-all duration-1000" id="container">
             <!-- <div id="top"
                 class="w-full  flex justify-center items-center flex-wrap gap-2 [&>div]:rounded-full [&>div]:border [&>div]:border-[#C2C2C2]  [&>div]:px-2 [&>div]:py-1">
                 <div>Горячие трещины</div>
@@ -9,7 +9,7 @@
             </div> -->
             <!-- <img id="left" src="/images/arrow-right.svg" class="h-[24px] transform rotate-180" @click="previousItem"> -->
             <img id="photo" :src="'/defects/' + itemEdit + '/' + imageEdit + '.png'"
-                class="w-[250px] h-[200px] rounded-xl" alt="">
+                class="w-[300px] h-[220px] rounded-xl" alt="">
             <!-- <img id="right" src="/images/arrow-right.svg" class="h-[24px]" @click="nextItem"> -->
             <button @click="nextImage" id="bot"
                 class="w-[300px] h-[50px] bg-[#2C50CC] rounded-lg text-white font-Manrope_Bold text-[16px] flex justify-center items-center gap-2 ">Следующий
