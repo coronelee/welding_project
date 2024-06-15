@@ -15,6 +15,7 @@
     "axios": "^1.7.2",
     "canvas": "^2.11.2",
     "chart.js": "^3.9.1",
+    "highcharts-vue": "^2.0.1",
     "imask": "^7.6.1",
     "sms_ru": "^0.0.1",
     "vite": "^5.3.1",

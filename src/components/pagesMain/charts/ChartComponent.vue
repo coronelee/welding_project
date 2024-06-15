@@ -1,10 +1,10 @@
 <script setup>
-import { ref, onMounted } from 'vue';
+import { ref, onMounted, reactive, toRaw } from 'vue';
 import axios from 'axios';
 import { Chart, registerables } from 'chart.js';
 import { computed } from 'vue';
 import { LineChart, BarChart, DoughnutChart } from 'vue-chart-3';
-import { c } from 'vite/dist/node/types.d-aGj9QkWt';
+
 let rand = [];
 const props = defineProps({
     typechart: String
@@ -12,44 +12,75 @@ const props = defineProps({
 
 Chart.register(...registerables);
 
-const quantity = ref(null)
 const dataBase = ref(null);
-
+const quantity = reactive([])
+const description = ref([]);
 onMounted(() => {
-    axios.get('http://localhost:8081/api/v1/text-stats/most-common')
-        .then((response) => {
-            if (props.typechart === 'doughnut') {
-                dataBase.value = response.data;
-                // let arr = []
-                // for (let i = 0; i < dataBase.value.length; i++) {
-                //     arr.push(dataBase.value[i].quantity);
-                // }
-                // quantity.value = arr
-                // for (let i = 0; i < dataBase.value.length; i++) {
-                //     arr.push(response.data[i].quantity)
-                // }
-                // quantity.value = arr
-                // console.log(quantity.value)
-            }
-        })
-        .catch((error) => {
-            console.error('Ошибка:', error);
-        });
+    if (props.typechart == 'doughnut') {
+        axios.get('http://localhost:8081/api/v1/text-stats/most-common')
+            .then((response) => {
 
+                dataBase.value = response.data;
+                let arr = []
+                for (let i = 0; i < dataBase.value.length; i++) {
+                    arr[i] = dataBase.value[i].quantity
+                }
+                quantity.value = arr
+                for (let i = 0; i < dataBase.value.length; i++) {
+                    arr[i] = dataBase.value[i].description
+                }
+                description.value = arr
+            })
+    }
+    if (props.typechart == 'bar') {
+        axios.get('http://localhost:8081/api/v1/text-stats/categories')
+            .then((response) => {
+
+                dataBase.value = response.data;
+                let arr = []
+                for (let i = 0; i < dataBase.value.length; i++) {
+                    arr[i] = dataBase.value[i].quantity
+
+                }
+                quantity.value = arr
+                console.log(arr)
+            })
+    }
+    if (props.typechart == 'line') {
+        axios.get('http://localhost:8081/api/v1/text-stats/most-common')
+            .then((response) => {
+
+                dataBase.value = response.data;
+                let arr = []
+                for (let i = 0; i < dataBase.value.length; i++) {
+                    arr[i] = dataBase.value[i].quantity
+                }
+                quantity.value = arr
+
+            })
+    }
 })
 
-
+const getQuantity = () => {
+    axios.get('http://localhost:8081/api/v1/text-stats/most-common').then((response) => {
+        for (let i = 0; i < response.data.length; i++) {
+            quantity[i] = response.data[i].quantity
+        }
+    });
+    let arr = toRaw(quantity.value)
+    console.log(arr)
+    return arr
+}
 
 const chartData = computed(() => ({
     datasets: [
         {
-            data: quantity,
+            data: [6, 5, 4, 3, 2],
             backgroundColor: '#2C50CC',
             borderColor: '#77CEFF',
             borderWidth: 2,
             borderRadius: 2,
             hoverOffset: 2,
-            borderRadius: 2,
             barThickness: 2,
         },
     ],
@@ -80,6 +111,16 @@ const chartData = computed(() => ({
         },
     }
 }));
+// getQuantity()
+//     .then((data) => {
+//         quantity.value = data;
+//     })
+//     .catch((error) => {
+//         console.error(error);
+//     });
+
+
+
 const chartOptions = computed(() => ({
     responsive: true,
     maintainAspectRatio: true,
@@ -111,7 +152,6 @@ const chartOptions = computed(() => ({
 }));
 
 
-let data = ref(0)
 
 
 
@@ -119,7 +159,9 @@ let data = ref(0)
 
 <template>
     <div class="flex flex-col px-4 font-Manrope_Medium text-[16px] text-[#5F5F5F]">
-        <span v-for="item in dataBase" :key="item.id">{{ item.category }} - {{ item.quantity }}</span>
+        <span v-for="item in dataBase" :key="item.id"><b>{{ item.category }}</b> - {{ item.quantity }} {{
+            item.description
+        }}</span>
     </div>
     <LineChart :chart-options="chartOptions" :chart-data="chartData" v-if="typechart === 'line'" />
     <BarChart :chart-options="chartOptions" :chart-data="chartData" v-if="typechart === 'bar'" />

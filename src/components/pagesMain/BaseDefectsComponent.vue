@@ -34,6 +34,7 @@
 </template>
 
 <script setup>
+import axios from 'axios';
 import { ref, onMounted } from 'vue';
 const imageEdit = ref(0);
 
@@ -86,6 +87,9 @@ const openText = () => {
     el.classList.toggle('brightness-50');
 }
 
+
+const knowledgeBase = ref([])
+
 onMounted(() => {
     const targetEl = document.getElementById('container');
     let startX = 0;
@@ -120,6 +124,14 @@ onMounted(() => {
             console.error('touchEnd: Invalid state');
         }
     }
+    let arr = []
+    axios.get('http://localhost:8081/api/v1/knowledgebase').then((response) => {
+        for (let i = 0; i < response.data.length; i++) {
+            arr[i] = response.data[i]
+        }
+    })
+    knowledgeBase.value = arr
+    console.log(knowledgeBase.value)
 });
 
 </script>

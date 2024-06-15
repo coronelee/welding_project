@@ -43,7 +43,6 @@ import { ref, watch } from "vue";
 defineProps({
     first_name: String
 })
-const htmlstring = ref('')
 const resultData = ref([])
 const input = document.createElement('input');
 const loadImage = () => {
@@ -59,7 +58,6 @@ const loadImage = () => {
                 headers: { "Content-Type": "multipart/form-data" },
             },).then((response) => {
                 resultData.value = response.data
-                console.log(resultData.value)
             })
     }
 }

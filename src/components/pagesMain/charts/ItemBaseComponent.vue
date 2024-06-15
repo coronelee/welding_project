@@ -11,7 +11,6 @@
             <ChartComponent :typechart="typeChart" />
         </div>
     </div>
-
 </template>
 
 <script setup>
