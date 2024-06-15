@@ -1,7 +1,13 @@
 <template>
-    <div class="flex justify-end items-center flex-col gap-2 w-full">
+    <div class="flex justify-end items-center flex-col gap-2 w-full h-full">
         <div class="w-full px-4 py-4 [&>img]:flex [&>img]:w-full justify-center items-center transition-all duration-1000"
             id="container">
+            <div id="top"
+                class="w-full  flex justify-center items-center flex-wrap gap-2 [&>div]:rounded-full [&>div]:border [&>div]:border-[#C2C2C2]  [&>div]:px-2 [&>div]:py-1">
+                <div>Горячие трещины</div>
+                <div>Подрезы</div>
+                <div>Возникновение пор</div>
+            </div>
             <!-- <img id="top" src="/images/arrow-right.svg" class=" h-[24px] transform rotate-[270deg]"
                 @click="previousImage" alt=""> -->
             <img id="left" src="/images/arrow-right.svg" class="h-[24px] transform rotate-180" @click="previousItem">
@@ -14,8 +20,8 @@
             <!-- <img src="/images/arrow-right.svg"
                     class="h-[24px] transform rotate-90" alt=""> -->
         </div>
-        <div id="text" :style="!openTextValue ? 'height: 40%;' : 'height: 60%'"
-            class="transition-all duration-1000 text-3xl w-full bg-white rounded-t-xl flex justify-between items-center px-6 drop-shadow-[0_35px_35px_rgba(0,0,0,0.25)]  flex-col pt-4">
+        <div id="text" :style="!openTextValue ? 'height: 40%;' : 'height: 80%'"
+            class="transition-all duration-1000 text-3xl w-full bg-white rounded-t-xl flex justify-between items-center px-6 drop-shadow-2xl  flex-col pt-4">
             <div class="flex justify-start items-center flex-col gap-2 overflow-scroll">
                 <span class="font-Manrope_Bold text-[24px] flex  justify-center items-center gap-2"><span>{{
                     data[itemEdit].name
@@ -80,7 +86,8 @@ const openTextValue = ref(false)
 const openText = () => {
     openTextValue.value = !openTextValue.value
     const el = document.getElementById('container');
-    el.classList.toggle('blur-xl');
+    el.classList.toggle('blur-sm');
+    el.classList.toggle('brightness-50');
 }
 
 onMounted(() => {
@@ -120,7 +127,7 @@ onMounted(() => {
     display: grid;
     grid-auto-columns: 1fr;
     grid-template-columns: 24px 1fr 24px;
-    grid-template-rows: 24px 1fr 24px;
+    grid-template-rows: 100px 1fr 24px;
     gap: 25px 5px;
     grid-template-areas:
         ". top ."
