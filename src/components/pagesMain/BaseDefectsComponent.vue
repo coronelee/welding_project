@@ -28,7 +28,7 @@
                         }}</span>
                     <div class="font-Manrope_Bold text-[12px] text-[#2C50CC] flex justify-center items-center"
                         id="target" @click="openText()">
-                        подробнее
+                        {{ openTextValue ? 'скрыть' : 'подробнее' }}
                     </div>
                 </span>
                 <span class="font-Manrope_Medium text-[16px] ">{{ data[itemEdit].discription }}</span>
