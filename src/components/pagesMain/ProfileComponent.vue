@@ -15,29 +15,28 @@
                     <span>Выполненные проверки</span>
                     <img src="/images/arrow-right.svg" alt="">
                 </div>
-                <div class="flex justify-between items-center">
+                <!-- <div class="flex justify-between items-center">
                     <span>Мой аккаунт</span>
                     <img src="/images/arrow-right.svg" alt="">
                 </div>
                 <div class="flex justify-between items-center">
                     <span>Настройки</span>
                     <img src="/images/arrow-right.svg" alt="">
-                </div>
+                </div> -->
                 <div class="flex justify-between items-center">
                     <span>Техподдержка</span>
                     <img src="/images/arrow-right.svg" alt="">
                 </div>
-                <div class="flex justify-between items-center">
+                <!-- <div class="flex justify-between items-center">
                     <span>Информация</span>
                     <img src="/images/arrow-right.svg" alt="">
-                </div>
+                </div> -->
             </div>
         </div>
-        <component v-if="page == 'checks'" :is="ChecksComponent"  :first_name="first_name"/>
+        <component v-if="page == 'checks'" :is="ChecksComponent" :first_name="first_name" />
     </div>
-
-
 </template>
+
 
 <script setup>
 import { ref } from "vue";
@@ -48,14 +47,12 @@ defineProps({
 })
 const page = ref('main')
 
-const changePage = (pageName) =>{
+const changePage = (pageName) => {
     page.value = pageName
-    console.log(page)
 }
 
-
+// let tg = "Welder"
 // let first_name = "Anton"
 let role = "Welder"
-let tg = "Welder"
 let phone = "12345678910"
 </script>
