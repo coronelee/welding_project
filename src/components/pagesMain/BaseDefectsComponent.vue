@@ -2,12 +2,12 @@
     <div class="flex justify-end items-center flex-col gap-2 w-full h-full">
         <div class="w-full px-4 py-4 [&>img]:flex [&>img]:w-full justify-center items-center transition-all duration-1000"
             id="container">
-            <div id="top"
+            <!-- <div id="top"
                 class="w-full  flex justify-center items-center flex-wrap gap-2 [&>div]:rounded-full [&>div]:border [&>div]:border-[#C2C2C2]  [&>div]:px-2 [&>div]:py-1">
                 <div>Горячие трещины</div>
                 <div>Подрезы</div>
                 <div>Возникновение пор</div>
-            </div>
+            </div> -->
             <!-- <img id="left" src="/images/arrow-right.svg" class="h-[24px] transform rotate-180" @click="previousItem"> -->
             <img id="photo" :src="'/defects/' + itemEdit + '/' + imageEdit + '.png'"
                 class="w-[300px] h-[200px] rounded-xl" alt="">
