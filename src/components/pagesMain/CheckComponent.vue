@@ -59,6 +59,7 @@ const loadImage = () => {
                 headers: { "Content-Type": "multipart/form-data" },
             },).then((response) => {
                 resultData.value = response.data
+                console.log(resultData.value)
             })
     }
 }
