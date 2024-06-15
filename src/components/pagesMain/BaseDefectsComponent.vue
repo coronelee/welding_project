@@ -107,14 +107,19 @@ onMounted(() => {
 
 
     function touchEnd(e) {
-        console.log(newCords - startWidth)
-        if (newCords - startWidth > 100) {
-            previousItem();
-            console.log(newCords - startWidth)
+        if (targetEl && newCords && startWidth) {
+            const delta = newCords - startWidth;
+            if (delta > 100) {
+                previousItem();
+                console.log(delta);
+            }
+            else if (delta < -100) {
+                nextItem();
+                console.log(-delta);
+            }
         }
-        else if (startWidth - newCords < -100) {
-            // nextItem();
-            console.log(startWidth - newCords)
+        else {
+            console.error('touchEnd: Invalid state');
         }
     }
 });
