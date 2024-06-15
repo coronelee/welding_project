@@ -42,16 +42,11 @@ onMounted(() => {
             })
     }
     if (props.typechart == 'bar') {
-        axios.get('http://localhost:8081/api/v1/text-stats/categories')
-            .then((response) => {
-                dataBase.value = response.data;
-                let arr = []
-                for (let i = 0; i < dataBase.value.length; i++) {
-                    arr[i] = dataBase.value[i].quantity
-                }
-                quantity.value = arr
-                console.log(arr)
-            })
+        dataBase.value = [{
+            category: 'Число дефектов за период',
+            quantity: "27",
+
+        }]
     }
     if (props.typechart == 'line') {
         axios.get('http://localhost:8081/api/v1/text-stats/most-common')
@@ -78,6 +73,8 @@ const getQuantity = () => {
     console.log(arr)
     return arr
 }
+
+
 
 const chartData = computed(() => ({
     labels: ['1', '2', '3', '4', '5'],
@@ -151,8 +148,82 @@ const chartOptions = computed(() => ({
     },
 }));
 
+const chartDataD = computed(() => ({
+    labels: ['10.06', '11.06', '12.06', '13.06', '14.06', '15.06', '16.06'],
+    datasets: [
+        {
+            data: [6, 2, 4, 3, 2, 2, 1, 5, 2],
+            backgroundColor: '#2C50CC',
+            borderColor: '#77CEFF',
+            borderWidth: 2,
+            borderRadius: 2,
+            hoverOffset: 2,
+            barThickness: 2,
+        },
+    ],
+    options: {
+        responsive: true,
+        maintainAspectRatio: false,
+        animations: {
+            tension: {
+                duration: 1000,
+                easing: 'linear',
+                from: 1,
+                to: 0,
+                loop: true
+            }
+        },
+        scales: {
+            y: {
+                min: 0,
+                ticks: {
+                    stepSize: 10,
+                    color: 'white',
+                    font: {
+                        size: 12,
+                        family: 'Manrope_Bold',
+                    },
+                },
+            },
+        },
+    }
+}));
 
 
+
+const chartOptionsD = computed(() => ({
+    responsive: true,
+    maintainAspectRatio: true,
+    scales: {
+        x: {
+            ticks: {
+                color: 'white',
+                font: {
+                    size: 12,
+                    family: 'Manrope_Bold',
+                },
+            },
+        },
+
+        y: {
+            min: 0,
+            max: 100,
+            ticks: {
+                stepSize: 10,
+                color: 'white',
+                font: {
+                    size: 12,
+                    family: 'Manrope_Bold',
+                },
+            },
+        },
+    },
+}));
+
+const dateB = [{
+    category: 'Процент дефектных швов',
+
+}]
 
 </script>
 
@@ -162,6 +233,6 @@ const chartOptions = computed(() => ({
             {{ item.description }}</span>
     </div>
     <LineChart :chart-options="chartOptions" :chart-data="chartData" v-if="typechart === 'line'" />
-    <BarChart :chart-options="chartOptions" :chart-data="chartData" v-if="typechart === 'bar'" />
+    <BarChart :chart-options="chartOptionsD" :chart-data="chartDataD" v-if="typechart === 'bar'" />
     <DoughnutChart :chart-options="chartOptions" :chart-data="chartData" v-if="typechart === 'doughnut'" />
 </template>
