@@ -4,8 +4,18 @@ import axios from 'axios';
 import { Chart, registerables } from 'chart.js';
 import { computed } from 'vue';
 import { LineChart, BarChart, DoughnutChart } from 'vue-chart-3';
+import { data } from 'autoprefixer';
 
 let rand = [];
+let labels = [];
+
+const getRand = () => {
+    for (let i = 0; i < 10; i++) {
+        rand[i] = Math.floor(Math.random() * 100) + 1
+    }
+}
+
+
 const props = defineProps({
     typechart: String
 })
@@ -70,6 +80,7 @@ const getQuantity = () => {
 }
 
 const chartData = computed(() => ({
+    labels: ['1', '2', '3', '4', '5'],
     datasets: [
         {
             data: [6, 5, 4, 3, 2],
@@ -111,11 +122,9 @@ const chartData = computed(() => ({
 
 
 
-
 const chartOptions = computed(() => ({
     responsive: true,
     maintainAspectRatio: true,
-
     scales: {
         x: {
             ticks: {
@@ -149,12 +158,10 @@ const chartOptions = computed(() => ({
 
 <template>
     <div class="flex flex-col px-4 font-Manrope_Medium text-[16px] text-[#5F5F5F]">
-        <span v-for="item in dataBase" :key="item.id"><b>{{ item.category }}</b> - {{ item.quantity }} {{
-            item.description
-            }}</span>
+        <span v-for="item in dataBase" :key="item.id"><b>{{ item.category }}</b> - {{ item.quantity }}
+            {{ item.description }}</span>
     </div>
     <LineChart :chart-options="chartOptions" :chart-data="chartData" v-if="typechart === 'line'" />
     <BarChart :chart-options="chartOptions" :chart-data="chartData" v-if="typechart === 'bar'" />
     <DoughnutChart :chart-options="chartOptions" :chart-data="chartData" v-if="typechart === 'doughnut'" />
-
 </template>

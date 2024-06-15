@@ -11,7 +11,6 @@
 </template>
 
 <script setup>
-import ChartComponent from "./charts/ChartComponent.vue";
 import ItemBaseComponent from "./charts/ItemBaseComponent.vue";
 const data = [
     {
