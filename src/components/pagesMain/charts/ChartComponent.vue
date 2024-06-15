@@ -155,7 +155,7 @@ const chartOptions = computed(() => ({
     <div class="flex flex-col px-4 font-Manrope_Medium text-[16px] text-[#5F5F5F]">
         <span v-for="item in dataBase" :key="item.id"><b>{{ item.category }}</b> - {{ item.quantity }} {{
             item.description
-            }}</span>
+        }}</span>
     </div>
     <LineChart :chart-options="chartOptions" :chart-data="chartData" v-if="typechart === 'line'" />
     <BarChart :chart-options="chartOptions" :chart-data="chartData" v-if="typechart === 'bar'" />
