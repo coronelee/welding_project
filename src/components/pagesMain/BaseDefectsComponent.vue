@@ -111,11 +111,9 @@ onMounted(() => {
             const delta = newCords - startWidth;
             if (delta > 100) {
                 previousItem();
-                console.log(delta);
             }
             else if (delta < -100) {
                 nextItem();
-                console.log(-delta);
             }
         }
         else {
