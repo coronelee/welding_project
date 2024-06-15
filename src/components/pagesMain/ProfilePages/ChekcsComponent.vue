@@ -29,7 +29,11 @@
 </template>
 
 <script setup>
+import { } from 'canvas';
 defineProps({
   first_name: String
 })
+
+
+
 </script>

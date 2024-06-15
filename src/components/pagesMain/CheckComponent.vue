@@ -24,12 +24,10 @@
                 <b>Способы устранения:</b>
                 <span v-for="(item, index) in resultData.removal" :key="index">{{ item }}</span>
             </span>
-
             <span class="font-Manrope_Medium text-[16px]" id="desription">
                 {{ resultData.detected ? '' :
                     'Вы еще не осуществляли проверок :(' }}
             </span>
-
         </div>
         <button
             class="w-[320px] h-[50px] bg-[#2C50CC] rounded-lg text-white font-Manrope_Bold text-[16px] flex justify-center items-center gap-2"
@@ -61,6 +59,7 @@ const loadImage = () => {
                 headers: { "Content-Type": "multipart/form-data" },
             },).then((response) => {
                 resultData.value = response.data
+                console.log(resultData.value)
             })
     }
 }

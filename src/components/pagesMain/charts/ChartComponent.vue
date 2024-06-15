@@ -10,7 +10,6 @@ const props = defineProps({
     typechart: String
 })
 const random = () => {
-
     for (let i = 0; props.typechart == 'doughnut' ? i < 7 : i < 40; i++) {
         rand.push(Math.floor(Math.random() * 100))
     }
@@ -21,11 +20,25 @@ const labelCreate = () => {
         label.push(i)
     }
 }
-labelCreate()
+// labelCreate()
 random()
 Chart.register(...registerables);
 
+onMounted(() => {
+    axios.get('http://localhost:8081/api/v1/text-stats/most-common').then((response) => {
+        if (props.typechart === 'doughnut') {
+            let arr = []
+            for (let i = 0; i < response.data.length; i++) {
+                label.push(response.data[i].category)
+            }
+            console.log(label)
 
+            // chartData.value.datasets[0].data = arr
+            // console.log(response.data)
+        }
+    })
+
+})
 
 const chartData = computed(() => ({
     labels: label,
@@ -101,16 +114,7 @@ const chartOptions = computed(() => ({
 
 let data = ref(0)
 
-onMounted(() => {
-    axios.get('http://localhost:8081/api/v1/text-stats/most-common').then((response) => {
-        data.value = response.data
-    })
 
-    if (props.typechart === 'doughnut') {
-        let arr = []
-
-    }
-})
 
 </script>
 
