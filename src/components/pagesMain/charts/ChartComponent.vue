@@ -1,4 +1,6 @@
 <script setup>
+import { ref, onMounted } from 'vue';
+import axios from 'axios';
 import { Chart, registerables } from 'chart.js';
 import { computed } from 'vue';
 import { LineChart, BarChart, DoughnutChart } from 'vue-chart-3';
@@ -95,6 +97,21 @@ const chartOptions = computed(() => ({
         },
     },
 }));
+
+
+let data = ref(0)
+
+onMounted(() => {
+    axios.get('http://localhost:8081/api/v1/text-stats/most-common').then((response) => {
+        data.value = response.data
+    })
+
+    if (props.typechart === 'doughnut') {
+        let arr = []
+
+    }
+})
+
 </script>
 
 <template>

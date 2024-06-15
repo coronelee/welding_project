@@ -12,17 +12,21 @@
             <span class="font-Manrope_Bold text-[24px]">
                 {{ resultData.category ? resultData.category : 'Ваши проверки' }}
             </span>
-            <span class="font-Manrope_Bold text-[24px]">
-                {{ resultData.category ? 'Были обнаружены:' + resultData.category : '' }}
+            <span v-if="resultData.detected" class="font-Manrope_Medium text-[16px] flex flex-col">
+                <b>Были обнаружены:</b>
+                <span v-for="(item, index) in resultData.detected" :key="index">{{ item }}</span>
             </span>
-            <span class="font-Manrope_Bold text-[24px]">
-                {{ resultData.category ? 'Возможные причины:' + resultData.category : '' }}
+            <span v-if="resultData.reasons" class="font-Manrope_Medium text-[16px] flex flex-col">
+                <b>Возможные причины:</b>
+                <span v-for="(item, index) in resultData.reasons" :key="index">{{ item }}</span>
             </span>
-            <span class="font-Manrope_Bold text-[24px]">
-                {{ resultData.category ? 'Способы устранения:' + resultData.category : '' }}
+            <span v-if="resultData.removal" class="font-Manrope_Medium text-[16px] flex flex-col">
+                <b>Способы устранения:</b>
+                <span v-for="(item, index) in resultData.removal" :key="index">{{ item }}</span>
             </span>
+
             <span class="font-Manrope_Medium text-[16px]" id="desription">
-                {{ resultData.explanation ? resultData.explanation :
+                {{ resultData.detected ? '' :
                     'Вы еще не осуществляли проверок :(' }}
             </span>
 
@@ -34,7 +38,7 @@
     </div>
 </template>
 
-
+<!--    -->
 <script setup>
 import axios from 'axios';
 import { ref, watch } from "vue";
