@@ -106,28 +106,17 @@ onMounted(() => {
     }
 
 
-
-    // function touchStart(e) {
-    //     startY = e.touches[0].clientY;
-    //     startHeight = textEl.offsetHeight; // Используем offsetHeight для получения текущей высоты элемента
-    // }
-
     function touchEnd(e) {
-
-        if (newCords > startWidth) {
-            nextItem()
+        console.log(newCords - startWidth)
+        if (newCords - startWidth > 100) {
+            previousItem();
+            console.log(newCords - startWidth)
         }
-        else if (newCords < startWidth) {
-            previousItem()
+        else if (startWidth - newCords < -100) {
+            // nextItem();
+            console.log(startWidth - newCords)
         }
     }
-
-    // function touchEnd(e) {
-    //     requestAnimationFrame(() => {
-    //         const computedHeight = getComputedStyle(textEl).height;
-    //         textEl.style.height = computedHeight;
-    //     });
-    // }
 });
 
 </script>
