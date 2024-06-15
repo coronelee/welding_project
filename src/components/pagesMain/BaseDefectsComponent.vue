@@ -1,21 +1,22 @@
 <template>
-    <div class="flex justify-end items-center flex-col gap-2 w-full overflow-scroll">
+    <div class="flex justify-end items-center flex-col gap-2 w-full">
         <div class="w-full flex justify-center px-4 py-4 items-center">
             <img :src="data[0].img" class="w-[300px]" alt="">
         </div>
-        <div
-            class="text-3xl w-full h-[60%] bg-white rounded-t-lg flex justify-between items-center px-6  flex-col pt-4">
+        <div id="text"
+            class="text-3xl w-full h-[40%] bg-white rounded-t-xl flex justify-between items-center px-6 drop-shadow-[0_35px_35px_rgba(0,0,0,0.25)]  flex-col pt-4">
+            <div class="w-[40px] h-[10px] rounded-full bg-[#999] absolute top-[8px] left-1/2 -translate-x-1/2"
+                id="target"></div>
             <div class="flex justify-start items-center flex-col gap-2 overflow-scroll">
                 <span class="font-Manrope_Bold text-[24px]">{{ data[0].name }}</span>
                 <span class="font-Manrope_Medium text-[16px] ">{{ data[0].discription }}</span>
             </div>
         </div>
     </div>
-
 </template>
 
 <script setup>
-
+import { ref, onMounted } from 'vue';
 const data = [
     {
         id: 1,
@@ -36,5 +37,37 @@ const data = [
         img: '/defects/2.png'
     }
 ]
+
+
+
+onMounted(() => {
+    const targetEl = document.getElementById('target');
+    const textEl = document.getElementById('text');
+    let startY = 0;
+    let startHeight = 0;
+
+    targetEl.addEventListener('touchstart', touchStart);
+    targetEl.addEventListener('touchmove', touchMove);
+    targetEl.addEventListener('touchend', touchEnd);
+
+    function touchStart(e) {
+        startY = e.touches[0].clientY;
+        startHeight = textEl.offsetHeight; // Используем offsetHeight для получения текущей высоты элемента
+    }
+
+    function touchMove(e) {
+        const deltaY = e.touches[0].clientY - startY;
+        const newHeight = startHeight - deltaY; // изменение знака для движения вверх
+        textEl.style.height = Math.max(newHeight, 0) + 'px';
+        textEl.style.transition = 'height 0.3s ease-out';
+    }
+
+    function touchEnd(e) {
+        requestAnimationFrame(() => {
+            const computedHeight = getComputedStyle(textEl).height;
+            textEl.style.height = computedHeight;
+        });
+    }
+});
 
 </script>
