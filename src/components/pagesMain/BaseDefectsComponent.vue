@@ -1,6 +1,7 @@
 <template>
     <div class="flex justify-end items-center flex-col gap-2 w-full h-full">
-        <div class="w-full px-4 py-4 flex  justify-center items-center transition-all duration-1000" id="container">
+        <div class="w-full px-4 py-4 flex flex-col gap-2  justify-center items-center transition-all duration-1000"
+            id="container">
             <!-- <div id="top"
                 class="w-full  flex justify-center items-center flex-wrap gap-2 [&>div]:rounded-full [&>div]:border [&>div]:border-[#C2C2C2]  [&>div]:px-2 [&>div]:py-1">
                 <div>Горячие трещины</div>
@@ -12,7 +13,7 @@
                 class="w-[340px] h-[220px] rounded-xl" alt="">
             <!-- <img id="right" src="/images/arrow-right.svg" class="h-[24px]" @click="nextItem"> -->
             <button @click="nextImage" id="bot"
-                class="w-full h-[50px] bg-[#2C50CC] rounded-lg text-white font-Manrope_Bold text-[16px] flex justify-center items-center gap-2 ">Следующий
+                class="w-[340px] h-[50px] bg-[#2C50CC] rounded-lg text-white font-Manrope_Bold text-[16px] flex justify-center items-center gap-2 ">Следующий
                 пример</button>
         </div>
         <div id="text" :style="!openTextValue ? 'height: 40%;' : 'height: 80%'"
@@ -136,18 +137,6 @@ onMounted(() => {
 </script>
 
 <style scoped>
-#container {
-    display: grid;
-    grid-auto-columns: 1fr;
-    grid-template-columns: 24px 1fr 24px;
-    grid-template-rows: 100px 1fr 24px;
-    gap: 25px 5px;
-    grid-template-areas:
-        ". top ."
-        "left photo right"
-        ". bot .";
-}
-
 #left {
     grid-area: left;
 }
