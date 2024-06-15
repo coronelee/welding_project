@@ -53,7 +53,7 @@ const loadImage = () => {
     input.onchange = () => {
         const img = new FormData();
         img.append('photo', input.files[0]);
-        axios.post(`http://158.160.165.90:8080/api/v1/photo/load`,
+        axios.post(`https://158.160.165.90:8080/api/v1/photo/load`,
             img,
             {
                 headers: { "Content-Type": "multipart/form-data" },
