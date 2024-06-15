@@ -42,6 +42,15 @@ const chartData = computed(() => ({
     options: {
         responsive: true,
         maintainAspectRatio: false,
+        animations: {
+            tension: {
+                duration: 1000,
+                easing: 'linear',
+                from: 1,
+                to: 0,
+                loop: true
+            }
+        },
         scales: {
             y: {
                 min: 0,
@@ -60,6 +69,7 @@ const chartData = computed(() => ({
 const chartOptions = computed(() => ({
     responsive: true,
     maintainAspectRatio: true,
+
     scales: {
         x: {
             ticks: {

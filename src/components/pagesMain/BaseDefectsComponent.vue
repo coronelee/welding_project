@@ -1,14 +1,20 @@
 <template>
     <div class="flex justify-end items-center flex-col gap-2 w-full">
-        <div class="w-full px-4 py-4 [&>img]:flex [&>img]:w-full justify-center items-center" id="container">
-            <img id="top" src="/images/arrow-right.svg" class=" h-[24px] transform rotate-[270deg]"
-                @click="previousImage" alt="">
+        <div class="w-full px-4 py-4 [&>img]:flex [&>img]:w-full justify-center items-center transition-all duration-1000"
+            id="container">
+            <!-- <img id="top" src="/images/arrow-right.svg" class=" h-[24px] transform rotate-[270deg]"
+                @click="previousImage" alt=""> -->
             <img id="left" src="/images/arrow-right.svg" class="h-[24px] transform rotate-180" @click="previousItem">
-            <img id="photo" :src="'/defects/' + imageEdit + '.png'" class="w-[300px] h-[200px] rounded-xl" alt="">
+            <img id="photo" :src="'/defects/' + itemEdit + '/' + imageEdit + '.png'"
+                class="w-[300px] h-[200px] rounded-xl" alt="">
             <img id="right" src="/images/arrow-right.svg" class="h-[24px]" @click="nextItem">
-            <img id="bot" src="/images/arrow-right.svg" class="h-[24px] transform rotate-90" @click="nextImage" alt="">
+            <button @click="nextImage" id="bot"
+                class="w-[300px] h-[50px] bg-[#2C50CC] rounded-lg text-white font-Manrope_Bold text-[16px] flex justify-center items-center gap-2 ">Следующий
+                пример</button>
+            <!-- <img src="/images/arrow-right.svg"
+                    class="h-[24px] transform rotate-90" alt=""> -->
         </div>
-        <div id="text" :style="!openTextValue ? 'height: 40%;' : 'height: 72%'"
+        <div id="text" :style="!openTextValue ? 'height: 40%;' : 'height: 60%'"
             class="transition-all duration-1000 text-3xl w-full bg-white rounded-t-xl flex justify-between items-center px-6 drop-shadow-[0_35px_35px_rgba(0,0,0,0.25)]  flex-col pt-4">
             <div class="flex justify-start items-center flex-col gap-2 overflow-scroll">
                 <span class="font-Manrope_Bold text-[24px] flex  justify-center items-center gap-2"><span>{{
@@ -53,13 +59,13 @@ const data = [
         id: 1,
         name: 'Горячие трещины',
         discription: 'Горячие трещины. Они появляются в процессе сварки или в процессе кристаллизации сварного соединения. Температура в этот момент может подняться выше 10 000 °C. Холодные трещины. Эти трещины появляются после завершения сварки и снижения температуры металла. Они могут образоваться спустя несколько часов или даже дней после проведения сварочных работ. Чаще всего это происходит при сварке стали. Причиной этого дефекта обычно являются деформация структуры стали. Кратеры. Обычно они образуются ближе к концу сварного шва. Когда сварочная ванна охлаждается и затвердевает, ей необходимо иметь достаточный объем, чтобы преодолеть усадку металла шва. В противном случае образуется кратерная трещина.',
-        img: ['/defects/1.png', '/defects/2.jpg', '/defects/3.jpg']
+        img: ['/defects/1/0.png', '/defects/1/1.png', '/defects/1/2.png']
     },
     {
         id: 2,
         name: 'Возникновение пор',
         discription: 'Причиной возникновения пор может стать сварка сырыми (непросушенными) электродами или же сварка по грязному металлу (наличие ржавчины, масла, краски). Захваченные газы создают заполненный пузырьками сварной шов, который становится слабым и может со временем разрушиться.',
-        img: ['/defects/1.png', '/defects/2.jpg', '/defects/3.jpg']
+        img: ['/defects/2/1.png', '/defects/2/2.jpg', '/defects/2/3.jpg']
     },
     {
         id: 3,
@@ -73,6 +79,8 @@ const openTextValue = ref(false)
 
 const openText = () => {
     openTextValue.value = !openTextValue.value
+    const el = document.getElementById('container');
+    el.classList.toggle('blur-xl');
 }
 
 onMounted(() => {
@@ -113,7 +121,7 @@ onMounted(() => {
     grid-auto-columns: 1fr;
     grid-template-columns: 24px 1fr 24px;
     grid-template-rows: 24px 1fr 24px;
-    gap: 0px 0px;
+    gap: 25px 5px;
     grid-template-areas:
         ". top ."
         "left photo right"
