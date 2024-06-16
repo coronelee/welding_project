@@ -33,7 +33,7 @@
                 </div> -->
             </div>
         </div>
-        <component v-if="page == 'checks'" :is="ChecksComponent" :first_name="first_name" />
+        <component v-if="page == 'checks'" :is="ChecksComponent" :changePage="changePage" :first_name="first_name" />
     </div>
 </template>
 
@@ -43,7 +43,8 @@ import { ref } from "vue";
 import ChecksComponent from './ProfilePages/ChekcsComponent.vue'
 defineProps({
     first_name: String,
-    username: String
+    username: String,
+    changePage: Function
 })
 const page = ref('main')
 

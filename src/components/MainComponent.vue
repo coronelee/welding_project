@@ -3,9 +3,8 @@
     <CheckComponent :first_name="first_name" v-if="page === 'check'" />
     <BaseComponent v-if="page === 'base'" />
     <BaseDefectsComponent v-if="page === 'defects'" />
-    <ProfileComponent :first_name="first_name" :username="username" v-if="page === 'profile'" />
-
-
+    <ProfileComponent :first_name="first_name" :changePage="changePage" :username="username"
+      v-if="page === 'profile'" />
     <NavBar :downloadImage="downloadImage" :onFileChange="onFileChange" :closeNavFile="closeNavFile" :page="page"
       :changePage="changePage" />
   </div>
@@ -26,6 +25,7 @@ const props = defineProps({
 })
 const changePage = (pageName) => {
   page.value = pageName
+  console.log(page.value)
 }
 const closeNavFile = ref(false);
 const downloadImage = (id) => {
