@@ -1,7 +1,8 @@
 <template>
   <div class="w-full h-full flex justify-end items-start  flex-col animate-[showMain_0.5s_ease_1]">
-    <CheckComponent :first_name="first_name" v-if="page === 'check'" />
-    <BaseComponent v-if="page === 'base'" />
+    <CheckComponent :first_name="first_name" v-if="page === 'check'" :editAdj="editAdj" :editGeo="editGeo"
+      :editInt="editInt" :editNon="editNon" :editPro="editPro" />
+    <BaseComponent v-if="page === 'base'" :adj="adj" :geo="geo" :int="int" :non="non" :pro="pro" />
     <BaseDefectsComponent v-if="page === 'defects'" />
     <ProfileComponent :first_name="first_name" :changePage="changePage" :username="username"
       v-if="page === 'profile'" />
@@ -38,5 +39,25 @@ const onFileChange = (event) => {
 
 }
 
+let adj = ref(20)
+let int = ref(5)
+let geo = ref(12)
+let pro = ref(0)
+let non = ref(0)
 
+const editAdj = (value) => {
+  adj = adj + value
+}
+const editInt = (value) => {
+  int = int + value
+}
+const editGeo = (value) => {
+  geo = geo + value
+}
+const editPro = (value) => {
+  pro = pro + value
+}
+const editNon = (value) => {
+  non = non + value
+}
 </script>

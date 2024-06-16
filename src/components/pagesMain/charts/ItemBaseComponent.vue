@@ -6,7 +6,9 @@
         </span>
         <div :id="typeChart" class="hidden ">
             <div class="flex flex-col px-4 font-Manrope_Medium text-[16px] text-[#5F5F5F]">
-                <!-- <span v-for="(item, index) in data" :key="index" class="">{{ item }}</span> -->
+                <span>
+                    {{ data.stroke1 }} <br>{{ data.stroke2 }} {{ adj + int + geo + pro + non }}</span><span>{{
+                    data.stroke3 }}</span>
             </div>
             <ChartComponent :typechart="typeChart" class="h-[200px]" />
         </div>
@@ -18,7 +20,12 @@ import ChartComponent from "./ChartComponent.vue";
 const props = defineProps({
     name: String,
     typeChart: String,
-    data: Array
+    data: Array,
+    adj: Number,
+    int: Number,
+    geo: Number,
+    pro: Number,
+    non: Number
 })
 const openChart = () => {
     document.getElementById(props.typeChart).classList.toggle("hidden");

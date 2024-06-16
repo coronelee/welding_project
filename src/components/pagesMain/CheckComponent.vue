@@ -5,10 +5,10 @@
             Здравствуйте, {{ first_name }} 😉
         </span>
         <div v-else class="flex justify-center items-center w-full px-4">
-            <img alt="" :src="resultData" id="image" class="rounded-xl w-full" @click="openImage()">
+            <img alt="" :src="resultData" id="image" class="rounded-xl w-full h-[250px]" @click="openImage()">
         </div>
     </div>
-    <div :style="resultData.length < 1 ? 'height: 85%' : 'height: 65%'"
+    <div :style="resultData.length < 1 ? 'height: 85%' : 'height: 55%'"
         class="text-3xl transition-all duration-1000  w-full bg-white rounded-t-lg drop-shadow-lg flex justify-between items-center py-6 px-4 flex-col">
         <div class="flex justify-top items-center flex-col gap-2 overflow-scroll">
             <span class="font-Manrope_Bold text-[24px]">
@@ -33,7 +33,7 @@
                         v-for="(item, index) in dataHistory" :key="index">
                         <b class="flex flex-wrap">{{ item.photoFileName }}</b><span class="z-10">{{
                             item.uploadDateTime
-                            }}</span>
+                        }}</span>
                     </span>
                 </div>
             </div>
@@ -48,9 +48,16 @@
 <script setup>
 import axios from 'axios';
 import { ref, watch, onMounted } from "vue";
-defineProps({
-    first_name: String
+const props = defineProps({
+    first_name: String,
+    editAdj: Function,
+    editInt: Function,
+    editGeo: Function,
+    editOrg: Function,
+    editNum: Function
 })
+
+
 
 onMounted(() => {
     axios.get('http://localhost:8081/api/v1/photo/history').then((response) => {
@@ -93,30 +100,14 @@ const loadImage = () => {
                 pro.value = stroke.split('/').pop().split('_')[4].split('-')[1]
                 non.value = stroke.split('/').pop().split('_')[5].split('.')[0].split('-')[1]
 
-
+                props.editAdj(adj.value)
+                props.editInt(int.value)
+                props.editGeo(geo.value)
+                props.editOrg(pro.value)
+                props.editNum(non.value)
             })
     }
 }
-
-// const unZip = async (data) => {
-//     // console.log(document.getElementById('file').files[0]);
-
-
-//     const files = document.getElementById('file').files[0];
-//     console.log(files[0]);
-//     const file = files;
-//     const zip = new JSZip();
-
-//     const zipFile = await zip.loadAsync(file);
-//     const entries = Object.values(zipFile.files);
-
-//     for (const entry of entries) {
-//         if (!entry.dir) {
-//             const content = await entry.async('text');
-//             console.log(entry.name, content);
-//         }
-//     }
-// }
 
 watch(resultData, () => {
     const file = input.files[0];
