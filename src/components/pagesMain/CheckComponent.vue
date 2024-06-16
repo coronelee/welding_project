@@ -28,13 +28,13 @@
             </span>
             <div v-else class="flex justify-between w-full items-start gap-4 flex-col">
                 <div class="w-full">
-                    <span
+                    <!-- <span
                         class="font-Manrope_Medium border-b w-[340px] text-[14px] flex justify-between items-center text-[#5F5F5F]"
                         v-for="(item, index) in dataHistory" :key="index">
                         <b class="flex flex-wrap">{{ item.photoFileName }}</b><span class="z-10">{{
                             item.uploadDateTime
                             }}</span>
-                    </span>
+                    </span> -->
                 </div>
             </div>
         </div>
