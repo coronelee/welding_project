@@ -5,28 +5,24 @@
             Здравствуйте, {{ first_name }} 😉
         </span>
         <div v-else class="flex justify-center items-center w-full">
-            <img alt="" :src="resultData" id="image" class="rounded-xl w-[250px]">
+            <img alt="" :src="resultData" id="image" class="rounded-xl w-[350px]" @click="openImage()">
         </div>
     </div>
     <div :style="resultData.length < 1 ? 'height: 85%' : 'height: 65%'"
         class="text-3xl transition-all duration-1000  w-full bg-white rounded-t-lg drop-shadow-lg flex justify-between items-center py-6 px-4 flex-col">
         <div class="flex justify-top items-center flex-col gap-2 overflow-scroll">
             <span class="font-Manrope_Bold text-[24px]">
-                {{ resultData.category ? resultData.category : 'Ваши проверки' }}
+                {{ resultData.length > 0 ? "" : 'Ваши проверки' }} </span>
+            <span v-if="resultData.length > 0" class="font-Manrope_Medium text-[16px] flex flex-col">
+                <span class="text-[24px] font-Manrope_Bold">Были обнаружены:</span>
+                <span v-if="adj > 0">Прилегающие дефекты: {{ adj }} раз(а)</span>
+                <span v-if="int > 0">Дефекты целостности: {{ int }} раз(а)</span>
+                <span v-if="geo > 0">Дефекты геометрии: {{ geo }} раз(а)</span>
+                <span v-if="org > 0">Дефекты постобработки: {{ org }} раз(а)</span>
+                <span v-if="num > 0">Дефекты невыполнения: {{ num }} раз(а)</span>
             </span>
-            <span v-if="resultData.detected" class="font-Manrope_Medium text-[16px] flex flex-col">
-                <b>Были обнаружены:</b>
-                <span v-for="(item, index) in resultData.detected" :key="index">{{ item }}</span>
-            </span>
-            <span v-if="resultData.reasons" class="font-Manrope_Medium text-[16px] flex flex-col">
-                <b>Возможные причины:</b>
-                <span v-for="(item, index) in resultData.reasons" :key="index">{{ item }}</span>
-            </span>
-            <span v-if="resultData.removal" class="font-Manrope_Medium text-[16px] flex flex-col">
-                <b>Способы устранения:</b>
-                <span v-for="(item, index) in resultData.removal" :key="index">{{ item }}</span>
-            </span>
-            <span v-if="dataHistory.length < 1" class="font-Manrope_Medium text-[16px]" id="desription">
+
+            <span v-if="resultData.length <= 0" class="font-Manrope_Medium text-[16px]" id="desription">
                 {{ resultData.detected ? '' :
                     'Вы еще не осуществляли проверок :(' }}
             </span>
@@ -35,7 +31,8 @@
                     <span
                         class="font-Manrope_Medium border-b w-[340px] text-[14px] flex justify-between items-center text-[#5F5F5F]"
                         v-for="(item, index) in dataHistory" :key="index">
-                        <b class="flex flex-wrap">{{ item.photoFileName }}</b><span class="z-10">{{ item.uploadDateTime
+                        <b class="flex flex-wrap">{{ item.photoFileName }}</b><span class="z-10">{{
+                            item.uploadDateTime
                             }}</span>
                     </span>
                 </div>
@@ -60,6 +57,15 @@ onMounted(() => {
         dataHistory.value = response.data
     })
 })
+const openImage = () => {
+    document.getElementById('image').classList.toggle('absolute');
+}
+const adj = ref()
+const int = ref()
+const geo = ref()
+const pro = ref()
+const non = ref()
+
 const dataHistory = ref([])
 const resultData = ref([])
 const input = document.createElement('input');
@@ -76,8 +82,18 @@ const loadImage = () => {
                 headers: { "Content-Type": "multipart/form-data" },
             },).then((response) => {
                 resultData.value = response.data.image_url
+                console.log(response.data.image_url);
 
-                console.log(response.data);
+                let stroke = response.data.image_url
+
+                stroke.split('/').pop().split('_')
+                adj.value = stroke.split('/').pop().split('_')[1].split('-')[1]
+                int.value = stroke.split('/').pop().split('_')[2].split('-')[1]
+                geo.value = stroke.split('/').pop().split('_')[3].split('-')[1]
+                pro.value = stroke.split('/').pop().split('_')[4].split('-')[1]
+                non.value = stroke.split('/').pop().split('_')[5].split('.')[0].split('-')[1]
+
+
             })
     }
 }
@@ -100,8 +116,6 @@ const loadImage = () => {
 //             console.log(entry.name, content);
 //         }
 //     }
-
-
 // }
 
 watch(resultData, () => {
