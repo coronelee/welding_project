@@ -39,9 +39,9 @@ const onFileChange = (event) => {
 
 }
 
-let adj = ref(20)
-let int = ref(5)
-let geo = ref(12)
+let adj = ref(5)
+let int = ref(0)
+let geo = ref(0)
 let pro = ref(0)
 let non = ref(0)
 
