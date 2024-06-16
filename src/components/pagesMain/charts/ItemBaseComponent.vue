@@ -7,8 +7,8 @@
         <div :id="typeChart" class="hidden ">
             <div class="flex flex-col px-4 font-Manrope_Medium text-[16px] text-[#5F5F5F]">
                 <span>
-                    {{ data.stroke1 }} <br>{{ data.stroke2 }} {{ adj + int + geo + pro + non }}</span><span>{{
-                    data.stroke3 }}</span>
+                    {{ data.stroke1 }} <br>{{ data.stroke2 }}</span><span>{{
+                        data.stroke3 }}</span>
             </div>
             <ChartComponent :typechart="typeChart" class="h-[200px]" />
         </div>
