@@ -4,7 +4,7 @@
         <span class="w-full py-2 bg-[#6BACE4] text-white rounded-t-lg px-4 " @click="openChart()">
             {{ name }}
         </span>
-        <div :id="typeChart" class="hidden">
+        <div :id="typeChart" class="hidden ">
             <div class="flex flex-col px-4 font-Manrope_Medium text-[16px] text-[#5F5F5F]">
                 <!-- <span v-for="(item, index) in data" :key="index" class="">{{ item }}</span> -->
             </div>

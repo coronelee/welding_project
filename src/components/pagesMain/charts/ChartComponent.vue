@@ -4,13 +4,13 @@ import axios from 'axios';
 import { Chart, registerables } from 'chart.js';
 import { computed } from 'vue';
 
-let rand = [];
+// let rand = [];
 
-const getRand = () => {
-    for (let i = 0; i < 10; i++) {
-        rand[i] = Math.floor(Math.random() * 100) + 1
-    }
-}
+// const getRand = () => {
+//     for (let i = 0; i < 10; i++) {
+//         rand[i] = Math.floor(Math.random() * 100) + 1
+//     }
+// }
 
 
 const props = defineProps({
@@ -42,7 +42,6 @@ onMounted(() => {
         dataBase.value = [{
             category: 'Число дефектов за период',
             quantity: "27",
-
         }]
     }
     if (props.typechart == 'line') {
@@ -217,10 +216,7 @@ const chartOptionsD = computed(() => ({
     },
 }));
 
-const dateB = [{
-    category: 'Процент дефектных швов',
 
-}]
 
 </script>
 

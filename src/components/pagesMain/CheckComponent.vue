@@ -5,7 +5,7 @@
             Здравствуйте, {{ first_name }} 😉
         </span>
         <div v-else class="flex justify-center items-center w-full">
-            <img :src="resultData.photoUrl" alt="" class="rounded-xl w-[250px]">
+            <img alt="" :src="resultData" id="image" class="rounded-xl w-[250px]">
         </div>
     </div>
     <div :style="resultData.length < 1 ? 'height: 85%' : 'height: 65%'"
@@ -69,17 +69,40 @@ const loadImage = () => {
     input.click();
     input.onchange = () => {
         const img = new FormData();
-        img.append('photo', input.files[0]);
-        axios.post(`http://localhost:8081/api/v1/photo/load`,
+        img.append('file', input.files[0]);
+        axios.post(`http://localhost:8000/upload`,
             img,
             {
                 headers: { "Content-Type": "multipart/form-data" },
             },).then((response) => {
-                resultData.value = response.data
-                console.log(resultData.value)
+                resultData.value = response.data.image_url
+
+                console.log(response.data);
             })
     }
 }
+
+// const unZip = async (data) => {
+//     // console.log(document.getElementById('file').files[0]);
+
+
+//     const files = document.getElementById('file').files[0];
+//     console.log(files[0]);
+//     const file = files;
+//     const zip = new JSZip();
+
+//     const zipFile = await zip.loadAsync(file);
+//     const entries = Object.values(zipFile.files);
+
+//     for (const entry of entries) {
+//         if (!entry.dir) {
+//             const content = await entry.async('text');
+//             console.log(entry.name, content);
+//         }
+//     }
+
+
+// }
 
 watch(resultData, () => {
     const file = input.files[0];
