@@ -14,7 +14,8 @@
         на проверку</span>
       <div class="flex justify-between w-full items-start gap-4 flex-col">
         <div class="w-full">
-          <span class="font-Manrope_Medium w-[340px] text-[14px] flex justify-between items-center text-[#5F5F5F]"
+          <span
+            class="font-Manrope_Medium border-b w-[340px] text-[14px] flex justify-between items-center text-[#5F5F5F]"
             v-for="(item, index) in data" :key="index">
             <b class="flex flex-wrap">{{ item.photoFileName }}</b><span class="z-10">{{ item.uploadDateTime
               }}</span>
@@ -31,11 +32,11 @@
           сварочный шов
           из галереи</span>
       </div>
-      <button @click="goCheck()"
+      <!-- <button @click="goCheck()"
         class="w-[340px] h-[50px] bg-[#2C50CC] rounded-lg text-white font-Manrope_Bold text-[16px] flex justify-center items-center gap-2 ">Сделать
         фото шва
         <img src="/images/scan.svg" class="w-[24px]" alt="">
-      </button>
+      </button> -->
     </div>
   </div>
 </template>
@@ -51,7 +52,6 @@ const data = ref([])
 onMounted(() => {
   axios.get('http://localhost:8081/api/v1/photo/history').then((response) => {
     data.value = response.data
-    console.log()
   })
 })
 

@@ -3,11 +3,8 @@ import { ref, onMounted, reactive, toRaw } from 'vue';
 import axios from 'axios';
 import { Chart, registerables } from 'chart.js';
 import { computed } from 'vue';
-import { LineChart, BarChart, DoughnutChart } from 'vue-chart-3';
-import { data } from 'autoprefixer';
 
 let rand = [];
-let labels = [];
 
 const getRand = () => {
     for (let i = 0; i < 10; i++) {

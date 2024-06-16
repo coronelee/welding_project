@@ -26,10 +26,20 @@
                 <b>Способы устранения:</b>
                 <span v-for="(item, index) in resultData.removal" :key="index">{{ item }}</span>
             </span>
-            <span class="font-Manrope_Medium text-[16px]" id="desription">
+            <span v-if="dataHistory.length < 1" class="font-Manrope_Medium text-[16px]" id="desription">
                 {{ resultData.detected ? '' :
                     'Вы еще не осуществляли проверок :(' }}
             </span>
+            <div v-else class="flex justify-between w-full items-start gap-4 flex-col">
+                <div class="w-full">
+                    <span
+                        class="font-Manrope_Medium border-b w-[340px] text-[14px] flex justify-between items-center text-[#5F5F5F]"
+                        v-for="(item, index) in dataHistory" :key="index">
+                        <b class="flex flex-wrap">{{ item.photoFileName }}</b><span class="z-10">{{ item.uploadDateTime
+                            }}</span>
+                    </span>
+                </div>
+            </div>
         </div>
         <button
             class="w-[320px] h-[50px] bg-[#2C50CC] rounded-lg text-white font-Manrope_Bold text-[16px] flex justify-center items-center gap-2"
@@ -40,10 +50,17 @@
 
 <script setup>
 import axios from 'axios';
-import { ref, watch } from "vue";
+import { ref, watch, onMounted } from "vue";
 defineProps({
     first_name: String
 })
+
+onMounted(() => {
+    axios.get('http://localhost:8081/api/v1/photo/history').then((response) => {
+        dataHistory.value = response.data
+    })
+})
+const dataHistory = ref([])
 const resultData = ref([])
 const input = document.createElement('input');
 const loadImage = () => {
