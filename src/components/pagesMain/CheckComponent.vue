@@ -4,8 +4,8 @@
         <span v-if="resultData.length < 1" class="font-Manrope_Bold text-[16px]">
             Здравствуйте, {{ first_name }} 😉
         </span>
-        <div v-else class="flex justify-center items-center w-full">
-            <img alt="" :src="resultData" id="image" class="rounded-xl w-[350px]" @click="openImage()">
+        <div v-else class="flex justify-center items-center w-full px-4">
+            <img alt="" :src="resultData" id="image" class="rounded-xl w-full" @click="openImage()">
         </div>
     </div>
     <div :style="resultData.length < 1 ? 'height: 85%' : 'height: 65%'"
