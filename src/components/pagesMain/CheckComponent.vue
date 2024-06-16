@@ -33,7 +33,7 @@
                         v-for="(item, index) in dataHistory" :key="index">
                         <b class="flex flex-wrap">{{ item.photoFileName }}</b><span class="z-10">{{
                             item.uploadDateTime
-                        }}</span>
+                            }}</span>
                     </span>
                 </div>
             </div>
@@ -53,8 +53,8 @@ const props = defineProps({
     editAdj: Function,
     editInt: Function,
     editGeo: Function,
-    editOrg: Function,
-    editNum: Function
+    editPro: Function,
+    editNon: Function
 })
 
 
@@ -104,7 +104,7 @@ const loadImage = () => {
                 props.editInt(int.value)
                 props.editGeo(geo.value)
                 props.editOrg(pro.value)
-                props.editNum(non.value)
+                props.editNon(non.value)
             })
     }
 }

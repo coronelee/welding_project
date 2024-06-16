@@ -7,7 +7,7 @@
         <div :id="typeChart" class="hidden ">
             <div class="flex flex-col px-4 font-Manrope_Medium text-[16px] text-[#5F5F5F]">
                 <span>
-                    {{ data.stroke1 }} <br>{{ data.stroke2 }}</span><span>{{
+                    {{ data.stroke1 }} <br>{{ data.stroke2 }} {{ valueSumm }}</span><span>{{
                         data.stroke3 }}</span>
             </div>
             <ChartComponent :typechart="typeChart" class="h-[200px]" />
@@ -25,7 +25,8 @@ const props = defineProps({
     int: Number,
     geo: Number,
     pro: Number,
-    non: Number
+    non: Number,
+    valueSumm: Number
 })
 const openChart = () => {
     document.getElementById(props.typeChart).classList.toggle("hidden");

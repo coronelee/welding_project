@@ -139,7 +139,7 @@ const chartOptions = computed(() => ({
 </script>
 
 <template>
-    <div class="flex flex-col px-4 font-Manrope_Medium text-[16px] text-[#5F5F5F]" v-if="props.typechart != 'line'">
+    <div class="flex flex-col px-4 font-Manrope_Medium text-[16px] text-[#5F5F5F]" v-if="props.typechart == 'doughnut'">
         <span v-for="item in dataBase" :key="item.id"><b>{{ item.category }}</b> - {{ item.quantity }}
         </span>
     </div>
